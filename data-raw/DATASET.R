@@ -1,4 +1,5 @@
-## code to prepare `DATASET` dataset goes here
+## code to prepare `egm_venue_data` 
+
 library(tidyverse)
 library(rvest)
 
