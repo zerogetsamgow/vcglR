@@ -1,0 +1,14 @@
+Package: vcglR
+Title: Victorian gambling data in tidy format
+Version: 0.0.0.9000
+Authors@R: 
+    person("Sam", "Gow", , "sam.gow@gmail.com", role = c("aut", "cre"))
+Description: This package contains Victorian gambling data in tidy formats. Current data is limited
+    to annual gaming machine data by venue.
+License: CC BY 4.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
