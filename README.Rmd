@@ -23,7 +23,7 @@ You can install the development version of vcglR like so:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("zerogetsamgow/dohactheme")
+devtools::install_github("zerogetsamgow/vcglR")
 ```
 
 ## Gaming venue data
