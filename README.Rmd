@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "80%"
 )
 ```
 
@@ -34,7 +34,13 @@ Released twice a year, this dataset includes gaming expenditure at each gaming v
 
 The data is published as `.xlsx` data. Historical data is also available.
 
-The `vcglr` package reads this data, cleans it and converts it tidy format.
+The `vcglr` package reads this data, cleans it and converts it tidy format. Data is stored as `egm_venue_data.rda` allowing it to be loaded with:
+
+```{r}
+egm_data = vcglR::egm_venue_data
+
+dplyr::glimpse(egm_data)
+```
 
 Cleaning consists of:
 
