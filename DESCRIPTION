@@ -1,6 +1,6 @@
 Package: vcglR
 Title: Victorian gambling data in tidy format
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person("Sam", "Gow", , "sam.gow@gmail.com", role = c("aut", "cre"))
 Description: This package contains Victorian gambling data in tidy formats. Current data is limited
