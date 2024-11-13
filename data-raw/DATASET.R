@@ -103,4 +103,4 @@ missing = egm_venue_data |>
 
 usethis::use_data(egm_venue_data, overwrite = TRUE)
 usethis::use_r("data_doc.R")
-
+gh auth login
