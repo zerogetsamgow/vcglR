@@ -15,40 +15,37 @@ knitr::opts_chunk$set(
 
 # vcglR
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-The goal of vcglR is to ...
+The goal of vcglR is to make Victorian gambling data available in tidy format.
 
 ## Installation
 
 You can install the development version of vcglR like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# install.packages("devtools")
+devtools::install_github("zerogetsamgow/dohactheme")
 ```
 
-## Example
+## Gaming venue data
 
-This is a basic example which shows you how to solve a common problem:
+The Victorian gambling regulator publishes gaming machine data by venue [on its website.](https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data)
 
-```{r example}
-library(vcglR)
-## basic example code
-```
+Released twice a year, this dataset includes gaming expenditure at each gaming venue, and the number of gaming machines it has.
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+The data is published as `.xlsx` data. Historical data is also available.
 
-```{r cars}
-summary(cars)
-```
+The `vcglr` package reads this data, cleans it and converts it tidy format.
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+Cleaning consists of:
 
-You can also embed plots, for example:
+-   updating and standardising venue names `venue_name` to the latest known venue name
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
+-   standardising local government areas `lga_name` to an abbreviated format.
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+-   gathering quantitative data (the number of gaming machines and player loss) to long format and replacing missing data (0 counts of gaming machines). The type of data is denoted by `measure_type`, values are stored as `value`.
+
+-   removing half-year data - only full financial year data is retained
+
+-   cleaning the date information for each financial year and saving it as a character variable `financial_year` and date `fy_date` variable.
+
+The package also adds geo-location data for each venue in the dataset. Location data was initially sourced from the regulator's [mapping tool](https://geomaps.vgccc.vic.gov.au/). Missing data was added manually and saved in `egm_locatons.csv` in `/data-raw/`

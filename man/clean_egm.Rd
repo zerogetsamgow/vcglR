@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_egm_name.R
 \name{clean_egm}
 \alias{clean_egm}
-\title{Convert Victorian local government names into a consistent format}
+\title{Convert Victorian gaming machine names to the latest values in a consistent format}
 \usage{
 clean_egm(
   x,
@@ -13,12 +13,10 @@ clean_egm(
 )
 }
 \arguments{
-\item{x}{a (character) vector containing Australian state names or abbreviations or
-a (numeric) vector containing state codes (1 = NSW, 2 = Vic, 3 = Qld, 4 = SA,
-5 = WA, 6 = Tas, 7 = NT, 8 = ACT).}
+\item{x}{a (character) vector containing Victorian gambling venue names}
 
 \item{to}{what form should the state names be converted to? Options are
-"egm_name", "venue_abbr" (the default), "egm_abs", and "egm_code".}
+"venue_name" and "venue_abbr" (the default).}
 
 \item{fuzzy_match}{logical; either TRUE (the default) which indicates that
 approximate/fuzzy string matching should be used, or FALSE which indicates that
@@ -35,29 +33,5 @@ is "jw", the Jaro-Winker distance; see \code{??stringdist-metrics} for more opti
 a character vector of state names, abbreviations, or codes.
 }
 \description{
-Convert Victorian local government names into a consistent format
-}
-\examples{
-
-library(lgvdatR)
-
-x <- c("Melburn", "Wang", "Donga")
-
-# Convert the above to state abbreviations
-clean_lga(x)
-
-# Convert the elements of `x` to state names
-
-clean_lga(x, to = "name")
-
-# Disable fuzzy matching; you'll get NAs unless exact matches can be found
-
-clean_lga(x, fuzzy_match = FALSE)
-
-# You can use clean_lga in a dplyr mutate call
-
-x_df <- data.frame(lga = x, stringsAsFactors = FALSE)
-
-\dontrun{x_df |> mutate(venue_abbr = clean_lga(lga))}
-
+Convert Victorian gaming machine names to the latest values in a consistent format
 }

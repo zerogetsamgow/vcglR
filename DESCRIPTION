@@ -8,11 +8,12 @@ Description: This package contains Victorian gambling data in tidy formats. Curr
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)
 LazyData: true
 Imports: 
-    stringdist
+    stringdist,
+    stringr
 URL: https://github.com/zerogetsamgow/vcglR
 BugReports: https://github.com/zerogetsamgow/vcglR/issues

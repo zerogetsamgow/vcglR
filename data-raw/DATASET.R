@@ -44,10 +44,13 @@ egm_venue_data =
   filter(!is.na(value), !str_detect(name,"Jan|Dec"),!is.na(venue_name)) |>
   # Identify and clean data
   mutate(measure_type = str_extract(name,"Expenditure|EGM"),
+         measure_type = factor(measure_type, levels = c("EGM","Expenditure")),
          venue_type = coalesce(venue_type,ven_type),
          financial_year = str_extract(sheet,"[0-9]{4} - [0-9]{4}") |> str_remove_all("\\s"),
          fy_date = fy::fy2date(financial_year),
          financial_year = fy::date2fy(fy_date),
+         venue_type = factor(venue_type, levels = c("Club","Hotel")),
+         
          value = as.numeric(value)) |> 
   select(-name) |> 
   # Remove data where expernditure and machines are zero in the year
@@ -68,8 +71,7 @@ egm_venue_data =
   ungroup() |> 
   # Keep only one row
   unique() |> 
-  select(-url:-sheet,-ven_type) |> 
- 
+  select(venue_name, venue_type, lga_name, financial_year, fy_date, measure_type, value) |> 
   # Add missing EGM values, noting we only have rows with Expenditure so EGM value can't be zero
   arrange(fy_date) |> 
   mutate(
@@ -101,6 +103,5 @@ egm_venue_data =
 missing = egm_venue_data |>
   filter(is.na(lat)) 
 
+# Save data
 usethis::use_data(egm_venue_data, overwrite = TRUE)
-usethis::use_r("data_doc.R")
-gh auth login
