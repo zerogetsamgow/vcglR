@@ -2,7 +2,7 @@
 
 library(tidyverse)
 library(rvest)
-
+library(vcglR)
 egm_venue_data = 
   # Get html from following url and extract hrefs for xlsx files
   "https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data" |> 
