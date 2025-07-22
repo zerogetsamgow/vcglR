@@ -14,7 +14,7 @@ egm_venue_data =
   filter(str_detect(url, "venue")) |> 
   # Add stub to urls
   mutate(
-    url = str_c("https://www.vgccc.vic.gov.au//",url)) |> 
+    url = str_c("https://www.vgccc.vic.gov.au",url)) |> 
   # Create temp download file for each (hence rowwise)
   rowwise() |> 
   mutate( 
@@ -59,7 +59,7 @@ egm_venue_data =
   ungroup() |> 
   # Clean venue and lga names
   mutate(
-         lga_name = lgvdatR::clean_lga(lga_name),
+         lga_name = vpstheme::clean_vic_lga(lga_name),
          venue_name = clean_egm(venue_name)
          ) |> 
   
@@ -89,7 +89,7 @@ location.data =
   read_csv("./data-raw/egm_locations.csv") |> 
   janitor::clean_names() |> 
   mutate(venue_name = clean_egm(venue_name),
-         lga_name =  lgvdatR::clean_lga(lga)) |> 
+         lga_name =  vpstheme::clean_vic_lga(lga)) |> 
   select(venue_name, lga_name, lat, long)
 
 # Add locations to venue data
