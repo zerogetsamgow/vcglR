@@ -64,7 +64,7 @@ egm_venue_data =
          ) |> 
   
   # Combine venue data where venue name changed mid-year and both reported
-  # eg Milanos/Brighton BEach Hotel
+  # eg Milanos/Brighton Beach Hotel
   group_by(venue_name, lga_name, financial_year, measure_type) |> 
   # We can use sum for both measure_types as EGM == 0 for at least one report.
   mutate(value = sum(value)) |> 
@@ -79,6 +79,7 @@ egm_venue_data =
   ) |> 
   group_by(venue_name, lga_name, measure_type) |> 
   fill(value) |> 
+  fill(venue_type) |> 
   ungroup()
   
 
