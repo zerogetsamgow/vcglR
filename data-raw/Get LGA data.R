@@ -48,7 +48,7 @@ player_loss = raw_egm_lga_data |>
          financial_year = str_extract(sheet,"[0-9]{4}-[0-9]{4}") |> fy::fy2date(),
          data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months")) |> 
   mutate(value = as.numeric(value),
-         name = "Player loss")
+         name = "Expenditure")
 
 
 venues =raw_egm_lga_data |> 
@@ -85,9 +85,9 @@ egm_lga_data =
     player_loss,
     machines,
     venues) |> 
-  select(url, sheet, lga_name, financial_year, data_month, name, value) |> 
-  pivot_wider() |> 
-  arrange(lga_name, data_month)
+  ungroup() |> 
+  select(lga_name, financial_year, data_month, "measure_type" = name, value) 
+
 
 
 # Save data
