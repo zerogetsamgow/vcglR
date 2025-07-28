@@ -3,8 +3,23 @@
 
 # vcglR
 
+The Victorian gambling regulator publishes gaming machine data by venue
+and local government area [on its
+website.](https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data)
+
+Released twice a year for venue data and monthly for LGA data, these
+datasets include gaming expenditure at each gaming venue/local area, and
+the number of gaming machines it has.
+
+The data is published as `.xlsx` data. Historical data is also
+available.
+
 The goal of vcglR is to make Victorian gambling data available in tidy
-format.
+format. The name is taken from the abbreviation of the gambling
+regulators former name.
+
+The `vcglR` package reads the `.xlsx` data, cleans it and converts it to
+tidy format.
 
 ## Installation
 
@@ -17,25 +32,14 @@ devtools::install_github("zerogetsamgow/vcglR")
 
 ## Gaming venue data
 
-The Victorian gambling regulator publishes gaming machine data by venue
-[on its
-website.](https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data)
-
-Released twice a year, this dataset includes gaming expenditure at each
-gaming venue, and the number of gaming machines it has.
-
-The data is published as `.xlsx` data. Historical data is also
-available.
-
-The `vcglr` package reads this data, cleans it and converts it tidy
-format. Data is stored as `egm_venue_data.rda` allowing it to be loaded
-with:
+Data is stored as `egm_venue_data.rda` and `egm_lga_data.rda` allowing
+it to be loaded into R from the pacakge:
 
 ``` r
 egm_data = vcglR::egm_venue_data
 
 dplyr::glimpse(egm_data)
-#> Rows: 16,561
+#> Rows: 17,044
 #> Columns: 9
 #> $ venue_name     <chr> "Geelong Football Club", "Geelong Football Club", "Red …
 #> $ venue_type     <fct> Club, Club, Club, Club, Club, Club, Club, Club, Club, C…
@@ -112,3 +116,8 @@ Cleaning consists of:
 - cleaning the date information for each financial year and saving it as
   a date variable `financial_year` and month of data `data_month`
   variable.
+
+## Last updated
+
+Last update on 28 July 2025. Data for the financial year 2024-25 is
+included in the package datasets.
