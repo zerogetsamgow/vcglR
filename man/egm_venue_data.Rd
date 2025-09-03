@@ -5,7 +5,7 @@
 \alias{egm_venue_data}
 \title{Victorian gaming venue data}
 \format{
-A data frame with 16561 rows and 9 variables:
+A data frame with 17044 rows and 9 variables:
 \describe{
 \item{\code{venue_name}}{The name of the venue, cleaned with clean_egm}
 \item{\code{venue_type}}{The type of venue, either 'Club' or 'Hotel'}

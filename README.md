@@ -119,5 +119,5 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 28 July 2025. Data for the financial year 2024-25 is
-included in the package datasets.
+Last update on 3 Sepetember July 2025. As of version 0.1.1, annual data
+is up to the financial year 2024-25 and monthly data is up to July 2025.
