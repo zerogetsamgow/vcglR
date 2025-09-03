@@ -10,7 +10,7 @@ raw_egm_lga_data =   # Get html from following url and extract hrefs for xlsx fi
   html_attr("href") |> 
   as_tibble_col("url") |>
   # filter for venue urls
-  filter(str_detect(url, "lga")) |> 
+  filter(str_detect(url, "monthly_lga")) |> 
   # Add stub to urls
   mutate(
     url = str_c("https://www.vgccc.vic.gov.au",url)) |> 
@@ -23,7 +23,7 @@ raw_egm_lga_data =   # Get html from following url and extract hrefs for xlsx fi
   mutate(x =
            pmap(
              list(url,download),
-             function(a,b) if(!file.exists(b)) download.file(a,b))
+             function(a,b) if(!file.exists(b)) download.file(a,b, mode = "wb"))
   )  |>
   select(-x) |>
   # Get sheet names and filter for Detail data sheet
@@ -51,7 +51,7 @@ player_loss = raw_egm_lga_data |>
          name = "Expenditure")
 
 
-venues =raw_egm_lga_data |> 
+venues = raw_egm_lga_data |> 
   janitor::clean_names() |> 
   select(url, download, sheet, lga_name, contains("venue")) |> 
   pivot_longer(contains("venue")) |> 
