@@ -10,7 +10,7 @@ raw_egm_lga_data =   # Get html from following url and extract hrefs for xlsx fi
   html_attr("href") |> 
   as_tibble_col("url") |>
   # filter for venue urls
-  filter(str_detect(url, "monthly_lga")) |> 
+  filter(str_detect(url, "lga")) |> 
   # Add stub to urls
   mutate(
     url = str_c("https://www.vgccc.vic.gov.au",url)) |> 

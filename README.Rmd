@@ -11,6 +11,10 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "80%"
 )
+library(tidyverse)
+library(sf)
+library(vpstheme)
+library(rvest)
 ```
 
 # vcglR
@@ -89,4 +93,374 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 3 Sepetember July 2025. As of version 0.1.1, annual data is up to the financial year 2024-25 and monthly data is up to July 2025.
+Last update on 3 Sepetember July 2025. As of version 0.1.2, annual data is up to the financial year 2024-25 and monthly data is up to July 2025.
+
+
+## Possible analysis
+
+The following provides an example of some of the analysis possible with vcglR.
+
+
+The Victorian Government has announced a trial of mandatory account-based play at select venues from September. See <https://www.premier.vic.gov.au/new-trial-help-prevent-gambling-harm>
+
+The trial will run across all 43 venues with gaming machines in Monash, Greater Dandenong and Ballarat from September to November.
+
+`vcglR` can be used by help those who want to track the effects of the trial. The package includes `tidy` venue and LGA level gaming expenditure and machine count data. Venue locations are also geocoded to enable mapping and working with other data and geographic areas.
+
+```{r analysis setup, include = TRUE}
+
+venue_data = vcglR::egm_venue_data |> 
+ # filter(fy_date == max(fy_date)) |> 
+  select(contains("name"), contains("type"), value, lat, long, fy_date, financial_year) |> 
+  mutate(is_trial = str_detect(lga_name, "Monash|Dandenong|Ballarat"))
+
+
+lga_shapes =
+  strayr::read_absmap("lga2021", remove_year_suffix = TRUE) |> 
+  filter(state_code == 2) |> 
+  mutate(is_trial = str_detect(lga_name, "Monash|Dandenong|Ballarat"))
+
+
+```
+
+Some early observations.
+
+The trial in metropolitan LGAs should provide easily accessible data to measure the effect on gambling expenditure, noting we will be able to compare Monash and Dandenong with neighbouring LGAs. There are also some risks of players shifting to neighbouring venues to avoid the trial.
+
+```{r make_melb_map, echo = FALSE}
+metro_venue_map = 
+  ggplot() +
+  geom_sf(
+    data = lga_shapes, 
+    mapping = aes(geometry = geometry, fill = is_trial),
+    colour = vpstheme::bv.smoke) +
+  geom_point(
+    data = venue_data |> filter(fy_date == max(fy_date)) ,
+    mapping = aes(x=long,y = lat, colour = is_trial)
+  ) +
+  geom_text(
+    data = lga_shapes, 
+    size = 4, 
+    mapping = aes(label = str_wrap(lga_name,10), x = cent_long, y = cent_lat),
+    colour = vpstheme::bv.charcoal) +
+  scale_colour_manual(values = c(bv.sky, bv.pink), guide = "none") +
+  scale_fill_manual(values = c(bv.white, bv.musk), guide = "none") +
+  coord_sf(ylim = c(-37.825,-38.1), xlim = c(145.0075,145.4)) +
+  ggthemes::theme_map(); 
+
+suppressWarnings(plot(metro_venue_map))
+
+```
+
+I will update the package as monthly data is released, so it will be possible to observe any effect on expenditure using the LGA level data as shown below.
+
+```{r lga_expend_plot, echo = FALSE}
+
+metro_lga_data =
+  vcglR::egm_lga_data |> 
+  filter(str_detect(lga_name,"Casey|Dandenong|Monash|Eira|Knox|Whitehorse|Kingston")) |> 
+  filter(str_detect(measure_type, "Exp"), !is.na(value)) 
+
+metro_lga_plot =
+  ggplot() +
+  geom_line(
+    metro_lga_data,
+    mapping = aes(x=data_month,y = value, colour = lga_name)
+  ) +
+  ggrepel::geom_text_repel(
+    metro_lga_data |> 
+      filter(data_month == max(data_month)),
+    hjust = 0,
+    direction = "y",
+    nudge_x = 10,
+    #xlim =  ymd("2025-5-31","2025-12-31"),
+    lineheight = .7,
+    mapping = 
+      aes(x=data_month,
+          y = value, 
+          label = str_wrap(lga_name,10),
+          colour = lga_name)
+  ) +
+  scale_y_continuvps(
+    name = "Net gambling expenditure, $ million",
+    limits = c(0,16e6), 
+    labels = scales::label_number(scale = 1/1e6)) +
+  scale_x_date(
+    name = NULL,
+    date_labels = "%Y",
+    breaks = seq.Date(from = ymd("2023-6-1"), 
+                      to = ymd("2025-6-1"), 
+                      by =   "years"),
+    limits = ymd("2023-8-1","2026-2-1"),
+    expand = c(0,0)
+  ) +
+  scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
+  theme_vps_dh()+
+  theme(legend.position = "right"); 
+
+suppressWarnings(plot(metro_lga_plot))
+
+
+```
+
+Gaming machines in Ballarat have few substitutes, so players will find it more difficult to move to neighbouring venues to avoid the trial. 
+
+```{r make_ballarat_map, echo = FALSE}
+ballarat_venue_map = 
+  ggplot() +
+  geom_sf(
+    data = lga_shapes, 
+    mapping = aes(geometry = geometry, fill = is_trial),
+    colour = vpstheme::bv.smoke) +
+  geom_point(
+    data = venue_data,
+    mapping = aes(x=long,y = lat, colour = is_trial)
+  ) +
+  geom_text(
+    data = lga_shapes, 
+    size = 4, 
+    mapping = aes(label = str_wrap(lga_name,10), x = cent_long, y = cent_lat),
+    colour = vpstheme::bv.charcoal) +
+  scale_colour_manual(values = c(bv.sky, bv.pink), guide = "none") +
+  scale_fill_manual(values = c(bv.white, bv.musk), guide = "none") +
+  coord_sf(ylim = c(-37.15,-37.9), xlim = c(143.1,144.3)) +
+  ggthemes::theme_map(); 
+
+suppressWarnings(plot(ballarat_venue_map))
+
+```
+
+This means comparisons for Ballarat will need to be made against similar regional centres rather than neighbouring LGAs. For example.
+
+```{r regional_expend_plot, echo = FALSE}
+
+regional_lga_data =
+  vcglR::egm_lga_data |> 
+  filter(str_detect(lga_name,"Ballarat|Bendigo|Geelong|Latrobe")) |> 
+  filter(str_detect(measure_type, "Exp"), !is.na(value)) 
+
+regional_lga_plot =
+  ggplot() +
+  geom_line(
+    regional_lga_data,
+    mapping = aes(x=data_month,y = value, colour = lga_name)
+  ) +
+  ggrepel::geom_text_repel(
+    regional_lga_data |> 
+      filter(data_month == max(data_month)),
+    hjust = 0,
+    direction = "y",
+    nudge_x = 10,
+    #xlim =  ymd("2025-5-31","2025-12-31"),
+    lineheight = .7,
+    mapping = 
+      aes(x=data_month,
+          y = value, 
+          label = str_wrap(lga_name,10),
+          colour = lga_name)
+  ) +
+  scale_y_continuvps(
+    name = "Net gambling expenditure, $ million",
+    limits = c(0,8e6), 
+    labels = scales::label_number(scale = 1/1e6)) +
+  scale_x_date(
+    name = NULL,
+    date_labels = "%Y",
+    breaks = seq.Date(from = ymd("2023-6-1"), 
+                      to = ymd("2025-6-1"), 
+                      by =   "years"),
+    limits = ymd("2023-8-1","2026-2-1"),
+    expand = c(0,0)
+  ) +
+  scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
+  theme_vps_dh()+
+  theme(legend.position = "right"); 
+
+suppressWarnings(plot(regional_lga_plot))
+
+
+```
+
+As venue data in the package is geocoded it supports analysis using other geographies like Statistical Areas.
+
+```{r join_population, echo = FALSE}
+
+sa3_shape =
+  strayr::read_absmap("sa32021", remove_year_suffix = TRUE) |> 
+  filter(state_code == 2)
+
+
+venue_crs = 
+  venue_data |> 
+  st_as_sf(
+    coords = c("long", "lat"),
+    crs = st_crs(sa3_shape))
+
+venue_sa3 = 
+  st_join(
+    venue_crs,
+    sa3_shape
+  ) |> 
+  as_tibble() |> 
+  left_join(
+    venue_data, 
+    by = 
+      join_by(venue_name, lga_name, venue_type,
+              measure_type, value, fy_date, financial_year, is_trial)
+    ) |> 
+  select(
+    contains("venue"),
+    fy_date,
+    is_trial,
+    lat,
+    long,
+    measure_type, 
+    value,
+    contains("sa3"),
+    ) |> 
+  group_by(sa3_name) |> 
+  mutate(sa3_trial = any(is_trial))
+
+
+sa3_shape =
+  left_join(
+    sa3_shape,
+    venue_sa3 |>
+      filter(fy_date == max(fy_date)) |> 
+      select(contains("sa3")),
+    by = join_by(sa3_code, sa3_name)
+  ) |> 
+  mutate(sa3_trial = coalesce(sa3_trial,FALSE))
+
+
+```
+
+```{r make_melb_sa3_map, echo = FALSE}
+metro_sa3_map = 
+  ggplot() +
+  geom_sf(
+    data = sa3_shape, 
+    mapping = aes(geometry = geometry, fill = sa3_trial),
+    colour = vpstheme::bv.smoke) +
+  geom_point(
+    data = venue_sa3 |>  filter(fy_date == max(fy_date)) ,
+    mapping = aes(x=long,y = lat, colour = is_trial)
+  ) +
+  geom_text(
+    data = sa3_shape, 
+    size = 4, 
+    mapping = aes(label = str_wrap(sa3_name,10), x = cent_long, y = cent_lat),
+    colour = vpstheme::bv.charcoal) +
+  scale_colour_manual(values = c(bv.sky, bv.pink), guide = "none") +
+ scale_fill_manual(values = c(bv.white, bv.musk), guide = "none") +
+  coord_sf(ylim = c(-37.825,-38.1), xlim = c(145.0075,145.4)) +
+   labs(caption = "Note: This chart use Statistical Areas Level 3 (SA3) geographical areas.") +
+  ggthemes::theme_map(); 
+
+suppressWarnings(plot(metro_sa3_map))
+
+```
+
+```{r get_pop, echo = FALSE}
+
+population =
+  "https://www.abs.gov.au/statistics/people/population/regional-population/latest-release" |> 
+  read_html() |> 
+  html_elements('div [href$=xlsx]') |>
+  html_attr("href")  |>
+  as_tibble_col("url") |>
+  mutate(
+    url = str_c("https://www.abs.gov.au", url)
+  ) |>
+  filter(str_detect(url,"32180DS0003")) |>
+  rowwise() |>
+  mutate(
+    download = tempfile(fileext = ".xlsx")) |>
+  ungroup()  |>
+  mutate(
+    x =
+      pmap(
+        list(url,download),
+        function(a,b) if(!file.exists(b)) download.file(a,b, mode = "wb")))  |>
+  select(-x) |>
+  mutate(sheets = map(download,readxl::excel_sheets)) |>
+  unnest(sheets) |>
+  filter(str_detect(sheets,"Table 2")) |>
+  # Extract data
+  mutate(data=pmap(list(download,sheets), readxl::read_excel, skip=5))  |>
+  select(data) |>
+  unnest(data) |> 
+  rename(
+    "state_code" = 1,
+    "state_name" = 2,
+    "sa3_code" = 7,
+    "sa3_name" = 8
+  ) |> 
+  filter(state_code == 2) |> 
+  select(contains("sa3"),contains("20")) |> 
+  pivot_longer(contains("20"), values_to = "population") |>
+  mutate(population = as.numeric(population),
+         fy_date = str_c(name,"-6-30") |> ymd())
+
+
+sa3_values_pop = 
+  venue_sa3 |> 
+  left_join(population) |> 
+  group_by(fy_date, sa3_name, measure_type, sa3_trial) |> 
+  summarise(
+    population = first(population),
+    value = sum(value)) |> 
+  mutate(
+    per_1k = 1e3*value/population
+  )
+
+sa3_values_plot_data =
+  sa3_values_pop |> 
+  ungroup() |> 
+  filter(!is.na(population)) |> 
+  filter(fy_date %in% c(max(fy_date))) |>
+  select(fy_date, sa3_name, measure_type, per_1k, sa3_trial) |> 
+  pivot_wider(values_from = per_1k, names_from = measure_type)
+
+sa3_plot = 
+  ggplot() +
+  ggrepel::geom_text_repel(
+      sa3_values_plot_data |> 
+        filter(str_detect(sa3_name, "Ballarat|Monash|Dandenong")),
+      colour = bv.charcoal,
+      ylim = c(.9e6,1e6),
+      direction = "x",
+      size = 5,
+      segment.color = bv.smoke,
+   mapping =  aes(
+      x = EGM,
+      y = Expenditure,
+      colour = sa3_trial,
+      label = sa3_name))+
+  geom_point(
+    sa3_values_plot_data,
+   mapping =  aes(x = EGM,
+    y = Expenditure,
+    colour = sa3_trial,
+    group = sa3_name)
+  ) +
+  
+  scale_x_continuvps(
+    name = "Gaming machines per 1000 people",
+    limits = c(0, 11),
+    breaks = seq(0,10,by=2)
+  ) +
+  scale_y_continuvps(
+    name = "Net gambling expenditure\nper 1000 people, $ 000s",
+    limits = c(0, 1e6),
+    labels = scales:::label_number(scale = 1/1e3)) +
+  scale_color_manual(guide = "none", values = c(bv.pink, bv.navy)) +
+  theme_vps_dffh() +
+  labs(caption = "Note: This chart uses (SA3)\ngeographical areas.")
+
+suppressWarnings(plot(sa3_plot))
+  
+
+
+
+```

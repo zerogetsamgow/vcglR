@@ -119,5 +119,81 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 3 Sepetember July 2025. As of version 0.1.1, annual data
+Last update on 3 Sepetember July 2025. As of version 0.1.2, annual data
 is up to the financial year 2024-25 and monthly data is up to July 2025.
+
+## Possible analysis
+
+The following provides an example of some of the analysis possible with
+vcglR.
+
+The Victorian Government has announced a trial of mandatory
+account-based play at select venues from September. See
+<https://www.premier.vic.gov.au/new-trial-help-prevent-gambling-harm>
+
+The trial will run across all 43 venues with gaming machines in Monash,
+Greater Dandenong and Ballarat from September to November.
+
+`vcglR` can be used by help those who want to track the effects of the
+trial. The package includes `tidy` venue and LGA level gaming
+expenditure and machine count data. Venue locations are also geocoded to
+enable mapping and working with other data and geographic areas.
+
+``` r
+
+venue_data = vcglR::egm_venue_data |> 
+ # filter(fy_date == max(fy_date)) |> 
+  select(contains("name"), contains("type"), value, lat, long, fy_date, financial_year) |> 
+  mutate(is_trial = str_detect(lga_name, "Monash|Dandenong|Ballarat"))
+
+
+lga_shapes =
+  strayr::read_absmap("lga2021", remove_year_suffix = TRUE) |> 
+  filter(state_code == 2) |> 
+  mutate(is_trial = str_detect(lga_name, "Monash|Dandenong|Ballarat"))
+```
+
+Some early observations.
+
+The trial in metropolitan LGAs should provide easily accessible data to
+measure the effect on gambling expenditure, noting we will be able to
+compare Monash and Dandenong with neighbouring LGAs. There are also some
+risks of players shifting to neighbouring venues to avoid the trial.
+
+<img src="man/figures/README-make_melb_map-1.png" width="80%" />
+
+I will update the package as monthly data is released, so it will be
+possible to observe any effect on expenditure using the LGA level data
+as shown below.
+
+<img src="man/figures/README-lga_expend_plot-1.png" width="80%" />
+
+Gaming machines in Ballarat have few substitutes, so players will find
+it more difficult to move to neighbouring venues to avoid the trial.
+
+<img src="man/figures/README-make_ballarat_map-1.png" width="80%" />
+
+This means comparisons for Ballarat will need to be made against similar
+regional centres rather than neighbouring LGAs. For example.
+
+<img src="man/figures/README-regional_expend_plot-1.png" width="80%" />
+
+As venue data in the package is geocoded it supports analysis using
+other geographies like Statistical Areas.
+
+<img src="man/figures/README-make_melb_sa3_map-1.png" width="80%" />
+
+    #> New names:
+    #> Joining with `by = join_by(fy_date, sa3_code, sa3_name)`
+    #> `summarise()` has grouped output by 'fy_date', 'sa3_name', 'measure_type'. You
+    #> can override using the `.groups` argument.
+    #> • `` -> `...1`
+    #> • `` -> `...2`
+    #> • `` -> `...3`
+    #> • `` -> `...4`
+    #> • `` -> `...5`
+    #> • `` -> `...6`
+    #> • `` -> `...7`
+    #> • `` -> `...8`
+
+<img src="man/figures/README-get_pop-1.png" width="80%" />
