@@ -119,8 +119,8 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 3 Sepetember July 2025. As of version 0.1.2, annual data
-is up to the financial year 2024-25 and monthly data is up to July 2025.
+Last update on 1 October 2025. As of version 0.1.3, annual data is up to
+the financial year 2024-25 and monthly data is up to August 2025.
 
 ## Possible analysis
 
@@ -183,17 +183,4 @@ other geographies like Statistical Areas.
 
 <img src="man/figures/README-make_melb_sa3_map-1.png" width="80%" />
 
-    #> New names:
-    #> Joining with `by = join_by(fy_date, sa3_code, sa3_name)`
-    #> `summarise()` has grouped output by 'fy_date', 'sa3_name', 'measure_type'. You
-    #> can override using the `.groups` argument.
-    #> • `` -> `...1`
-    #> • `` -> `...2`
-    #> • `` -> `...3`
-    #> • `` -> `...4`
-    #> • `` -> `...5`
-    #> • `` -> `...6`
-    #> • `` -> `...7`
-    #> • `` -> `...8`
-
-<img src="man/figures/README-get_pop-1.png" width="80%" />
+<img src="man/figures/README-use_pop-1.png" width="80%" />

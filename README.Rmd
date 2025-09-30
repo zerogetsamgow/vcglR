@@ -93,7 +93,7 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 3 Sepetember July 2025. As of version 0.1.2, annual data is up to the financial year 2024-25 and monthly data is up to July 2025.
+Last update on 1 October 2025. As of version 0.1.3, annual data is up to the financial year 2024-25 and monthly data is up to August 2025.
 
 
 ## Possible analysis
@@ -361,7 +361,7 @@ suppressWarnings(plot(metro_sa3_map))
 
 ```
 
-```{r get_pop, echo = FALSE}
+```{r get_pop, include = FALSE, echo = FALSE}
 
 population =
   "https://www.abs.gov.au/statistics/people/population/regional-population/latest-release" |> 
@@ -402,14 +402,17 @@ population =
   mutate(population = as.numeric(population),
          fy_date = str_c(name,"-6-30") |> ymd())
 
+```
 
+```{r use_pop, echo = FALSE}
 sa3_values_pop = 
   venue_sa3 |> 
-  left_join(population) |> 
+  left_join(population, by = join_by(fy_date, sa3_code, sa3_name)) |> 
   group_by(fy_date, sa3_name, measure_type, sa3_trial) |> 
   summarise(
     population = first(population),
-    value = sum(value)) |> 
+    value = sum(value),
+    .groups = "drop") |> 
   mutate(
     per_1k = 1e3*value/population
   )
