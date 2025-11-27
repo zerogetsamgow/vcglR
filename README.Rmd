@@ -173,6 +173,7 @@ metro_lga_plot =
     hjust = 0,
     direction = "y",
     nudge_x = 10,
+    min.segment.length = 5,
     #xlim =  ymd("2025-5-31","2025-12-31"),
     lineheight = .7,
     mapping = 
@@ -181,6 +182,23 @@ metro_lga_plot =
           label = str_wrap(lga_name,10),
           colour = lga_name)
   ) +
+  geom_vline(
+    xintercept = ymd("2025-9-1"), 
+    linetype = 2,
+    colour = bv.charcoal)+
+  geom_text(
+    data = tibble(
+      "data_month" = ymd("2025-9-5"),
+      "value" = 1e6,
+      "data_label" = "Trial\ncommenced"
+    ),
+    aes(x = data_month,
+        y = value, 
+        label = data_label),
+    size = 4,
+    lineheight = .7,
+    hjust = 0,
+    colour = bv.charcoal)+
   scale_y_continuvps(
     name = "Net gambling expenditure, $ million",
     limits = c(0,16e6), 
@@ -259,6 +277,23 @@ regional_lga_plot =
           label = str_wrap(lga_name,10),
           colour = lga_name)
   ) +
+    geom_vline(
+    xintercept = ymd("2025-9-1"), 
+    linetype = 2,
+    colour = bv.charcoal)+
+  geom_text(
+    data = tibble(
+      "data_month" = ymd("2025-9-5"),
+      "value" = 1e6,
+      "data_label" = "Trial\ncommenced"
+    ),
+    aes(x = data_month,
+        y = value, 
+        label = data_label),
+    size = 4,
+    lineheight = .7,
+    hjust = 0,
+    colour = bv.charcoal) +
   scale_y_continuvps(
     name = "Net gambling expenditure, $ million",
     limits = c(0,8e6), 
