@@ -93,7 +93,7 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 1 October 2025. As of version 0.1.3, annual data is up to the financial year 2024-25 and monthly data is up to August 2025.
+Last update on 28 November 2025. As of version 0.1.3, annual data is up to the financial year 2024-25 and monthly data is up to October 2025.
 
 
 ## Possible analysis
@@ -143,8 +143,8 @@ metro_venue_map =
     size = 4, 
     mapping = aes(label = str_wrap(lga_name,10), x = cent_long, y = cent_lat),
     colour = vpstheme::bv.charcoal) +
-  scale_colour_manual(values = c(bv.sky, bv.pink), guide = "none") +
-  scale_fill_manual(values = c(bv.white, bv.musk), guide = "none") +
+  scale_colour_manual(values = c(bv.navy, bv.purple), guide = "none") +
+  scale_fill_manual(values = c(bv.white, bv.crystal), guide = "none") +
   coord_sf(ylim = c(-37.825,-38.1), xlim = c(145.0075,145.4)) +
   ggthemes::theme_map(); 
 
@@ -195,7 +195,7 @@ metro_lga_plot =
     expand = c(0,0)
   ) +
   scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
-  theme_vps_dh()+
+  theme_vps_djcs()+
   theme(legend.position = "right"); 
 
 suppressWarnings(plot(metro_lga_plot))
@@ -221,8 +221,8 @@ ballarat_venue_map =
     size = 4, 
     mapping = aes(label = str_wrap(lga_name,10), x = cent_long, y = cent_lat),
     colour = vpstheme::bv.charcoal) +
-  scale_colour_manual(values = c(bv.sky, bv.pink), guide = "none") +
-  scale_fill_manual(values = c(bv.white, bv.musk), guide = "none") +
+  scale_colour_manual(values = c(bv.navy, bv.purple), guide = "none") +
+  scale_fill_manual(values = c(bv.white, bv.crystal), guide = "none") +
   coord_sf(ylim = c(-37.15,-37.9), xlim = c(143.1,144.3)) +
   ggthemes::theme_map(); 
 
@@ -272,8 +272,8 @@ regional_lga_plot =
     limits = ymd("2023-8-1","2026-2-1"),
     expand = c(0,0)
   ) +
-  scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
-  theme_vps_dh()+
+  scale_colour_djcs(palette = "primary", name = NULL, guide = "none")+
+  theme_vps_djcs()+
   theme(legend.position = "right"); 
 
 suppressWarnings(plot(regional_lga_plot))
@@ -351,8 +351,8 @@ metro_sa3_map =
     size = 4, 
     mapping = aes(label = str_wrap(sa3_name,10), x = cent_long, y = cent_lat),
     colour = vpstheme::bv.charcoal) +
-  scale_colour_manual(values = c(bv.sky, bv.pink), guide = "none") +
- scale_fill_manual(values = c(bv.white, bv.musk), guide = "none") +
+  scale_colour_manual(values = c(bv.navy, bv.purple), guide = "none") +
+  scale_fill_manual(values = c(bv.white, bv.crystal), guide = "none") +
   coord_sf(ylim = c(-37.825,-38.1), xlim = c(145.0075,145.4)) +
    labs(caption = "Note: This chart use Statistical Areas Level 3 (SA3) geographical areas.") +
   ggthemes::theme_map(); 
@@ -457,7 +457,7 @@ sa3_plot =
     name = "Net gambling expenditure\nper 1000 people, $ 000s",
     limits = c(0, 1e6),
     labels = scales:::label_number(scale = 1/1e3)) +
-  scale_color_manual(guide = "none", values = c(bv.pink, bv.navy)) +
+  scale_color_manual(guide = "none", values = c(bv.purple, bv.navy)) +
   theme_vps_dffh() +
   labs(caption = "Note: This chart uses (SA3)\ngeographical areas.")
 

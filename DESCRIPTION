@@ -1,12 +1,12 @@
 Package: vcglR
 Title: Victorian gambling data in tidy format
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: 
     person("Sam", "Gow", , "sam.gow@gmail.com", role = c("aut", "cre"))
 Description: This package contains Victorian gambling data in tidy formats. Current data is limited
     to annual gaming machine data by venue and monthly gaming machine data by local government area.
-    As of version 0.1.3, annual data is up to the financial year 2024-25 and monthly data is up to 
-    August 2025.
+    As of version 0.1.4, annual data is up to the financial year 2024-25 and monthly data is up to 
+    October 2025.
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
