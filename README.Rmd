@@ -181,6 +181,27 @@ metro_lga_plot =
           label = str_wrap(lga_name,10),
           colour = lga_name)
   ) +
+  geom_vline(
+    xintercept = lubridate::ymd("2025-10-1"),
+    colour = bv.charcoal,
+    linetype = 2) +
+  geom_text(
+    data =
+      tibble(
+        "data_month" = ymd("2025-10-10"),
+        "value" = 1e6,
+        "data_label" = "Trial\ncommenced"
+      ),
+    aes(
+      x = data_month,
+      y = value,
+      label = data_label
+    ),
+    size = 4,
+    lineheight = .7,
+    hjust = 0,
+    colour = bv.charcoal
+  ) +
   scale_y_continuvps(
     name = "Net gambling expenditure, $ million",
     limits = c(0,16e6), 
@@ -191,7 +212,7 @@ metro_lga_plot =
     breaks = seq.Date(from = ymd("2023-6-1"), 
                       to = ymd("2025-6-1"), 
                       by =   "years"),
-    limits = ymd("2023-8-1","2026-2-1"),
+    limits = ymd("2023-8-1","2026-3-1"),
     expand = c(0,0)
   ) +
   scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
@@ -259,6 +280,27 @@ regional_lga_plot =
           label = str_wrap(lga_name,10),
           colour = lga_name)
   ) +
+  geom_vline(
+    xintercept = lubridate::ymd("2025-10-1"),
+    colour = bv.charcoal,
+    linetype = 2) +
+    geom_text(
+    data =
+      tibble(
+        "data_month" = ymd("2025-10-10"),
+        "value" = 1e6,
+        "data_label" = "Trial\ncommenced"
+      ),
+    aes(
+      x = data_month,
+      y = value,
+      label = data_label
+    ),
+    size = 4,
+    lineheight = .7,
+    hjust = 0,
+    colour = bv.charcoal
+  ) +
   scale_y_continuvps(
     name = "Net gambling expenditure, $ million",
     limits = c(0,8e6), 
@@ -269,7 +311,7 @@ regional_lga_plot =
     breaks = seq.Date(from = ymd("2023-6-1"), 
                       to = ymd("2025-6-1"), 
                       by =   "years"),
-    limits = ymd("2023-8-1","2026-2-1"),
+    limits = ymd("2023-8-1","2026-3-1"),
     expand = c(0,0)
   ) +
   scale_colour_djcs(palette = "primary", name = NULL, guide = "none")+
