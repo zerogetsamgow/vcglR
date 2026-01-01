@@ -20,6 +20,14 @@ Imports:
 URL: https://github.com/zerogetsamgow/vcglR
 BugReports: https://github.com/zerogetsamgow/vcglR/issues
 Suggests: 
+    ggplot2,
+    ggrepel,
     knitr,
-    rmarkdown
+    readxl,
+    rmarkdown,
+    rvest,
+    scales,
+    sf,
+    strayr,
+    vpstheme
 VignetteBuilder: knitr
