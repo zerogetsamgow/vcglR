@@ -5,7 +5,7 @@
 \alias{egm_lga_data}
 \title{Victorian gaming venue data by LGA}
 \format{
-A data frame with 8208 rows and 5 variables:
+A data frame with 8100 rows and 5 variables:
 \describe{
 \item{\code{lga_name}}{The name of the local goverment area, cleaned with vpstheme::clean_vic_lga}
 \item{\code{financial_year}}{The financial year of the data, as a character variable.}
