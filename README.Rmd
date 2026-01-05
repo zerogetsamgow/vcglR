@@ -32,7 +32,7 @@ The `vcglR` package reads the `.xlsx` data, cleans it and converts it to tidy fo
 
 ## Installation
 
-You can install the development version of vcglR like so:
+You can install `vcglR` like so:
 
 ``` r
 # install.packages("devtools")
@@ -93,7 +93,7 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 28 November 2025. As of version 0.1.3, annual data is up to the financial year 2024-25 and monthly data is up to October 2025.
+Last update on 2 January 2026. As of version 0.1.5, annual data is up to the financial year 2024-25 and monthly data is up to November 2025.
 
 
 ## Possible analysis
@@ -155,14 +155,12 @@ suppressWarnings(plot(metro_venue_map))
 I will update the package as monthly data is released, so it will be possible to observe any effect on expenditure using the LGA level data as shown below.
 
 ```{r lga_expend_plot, echo = FALSE}
-
 metro_lga_data =
   vcglR::egm_lga_data |> 
   filter(str_detect(lga_name,"Casey|Dandenong|Monash|Eira|Knox|Whitehorse|Kingston")) |> 
   filter(str_detect(measure_type, "Exp"), !is.na(value)) 
 
-metro_lga_plot =
-  ggplot() +
+ggplot() +
   geom_line(
     metro_lga_data,
     mapping = aes(x=data_month,y = value, colour = lga_name)
@@ -173,8 +171,6 @@ metro_lga_plot =
     hjust = 0,
     direction = "y",
     nudge_x = 10,
-    min.segment.length = 5,
-    #xlim =  ymd("2025-5-31","2025-12-31"),
     lineheight = .7,
     mapping = 
       aes(x=data_month,
@@ -183,24 +179,6 @@ metro_lga_plot =
           colour = lga_name)
   ) +
   geom_vline(
-<<<<<<< HEAD
-    xintercept = ymd("2025-9-1"), 
-    linetype = 2,
-    colour = bv.charcoal)+
-  geom_text(
-    data = tibble(
-      "data_month" = ymd("2025-9-5"),
-      "value" = 1e6,
-      "data_label" = "Trial\ncommenced"
-    ),
-    aes(x = data_month,
-        y = value, 
-        label = data_label),
-    size = 4,
-    lineheight = .7,
-    hjust = 0,
-    colour = bv.charcoal)+
-=======
     xintercept = lubridate::ymd("2025-10-1"),
     colour = bv.charcoal,
     linetype = 2) +
@@ -221,10 +199,9 @@ metro_lga_plot =
     hjust = 0,
     colour = bv.charcoal
   ) +
->>>>>>> 96cd0741711ad4b60f86fcde661e1dee365789fd
   scale_y_continuvps(
     name = "Net gambling expenditure, $ million",
-    limits = c(0,16e6), 
+    
     labels = scales::label_number(scale = 1/1e6)) +
   scale_x_date(
     name = NULL,
@@ -232,23 +209,19 @@ metro_lga_plot =
     breaks = seq.Date(from = ymd("2023-6-1"), 
                       to = ymd("2025-6-1"), 
                       by =   "years"),
-    limits = ymd("2023-8-1","2026-3-1"),
     expand = c(0,0)
   ) +
+  coord_cartesian(xlim = ymd("2023-8-1","2026-3-1"), ylim = c(0,16e6)) +
   scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
   theme_vps_djcs()+
-  theme(legend.position = "right"); 
-
-suppressWarnings(plot(metro_lga_plot))
-
-
+  theme(legend.position = "right")
 ```
 
 Gaming machines in Ballarat have few substitutes, so players will find it more difficult to move to neighbouring venues to avoid the trial. 
 
 ```{r make_ballarat_map, echo = FALSE}
-ballarat_venue_map = 
-  ggplot() +
+
+ggplot() +
   geom_sf(
     data = lga_shapes, 
     mapping = aes(geometry = geometry, fill = is_trial),
@@ -265,9 +238,7 @@ ballarat_venue_map =
   scale_colour_manual(values = c(bv.navy, bv.purple), guide = "none") +
   scale_fill_manual(values = c(bv.white, bv.crystal), guide = "none") +
   coord_sf(ylim = c(-37.15,-37.9), xlim = c(143.1,144.3)) +
-  ggthemes::theme_map(); 
-
-suppressWarnings(plot(ballarat_venue_map))
+  ggthemes::theme_map()
 
 ```
 
@@ -277,11 +248,11 @@ This means comparisons for Ballarat will need to be made against similar regiona
 
 regional_lga_data =
   vcglR::egm_lga_data |> 
-  filter(str_detect(lga_name,"Ballarat|Bendigo|Geelong|Latrobe")) |> 
+  filter(str_detect(lga_name,"Ballarat|Bendigo|Latrobe|Wodon")) |> 
   filter(str_detect(measure_type, "Exp"), !is.na(value)) 
 
-regional_lga_plot =
-  ggplot() +
+
+ggplot() +
   geom_line(
     regional_lga_data,
     mapping = aes(x=data_month,y = value, colour = lga_name)
@@ -300,25 +271,6 @@ regional_lga_plot =
           label = str_wrap(lga_name,10),
           colour = lga_name)
   ) +
-<<<<<<< HEAD
-    geom_vline(
-    xintercept = ymd("2025-9-1"), 
-    linetype = 2,
-    colour = bv.charcoal)+
-  geom_text(
-    data = tibble(
-      "data_month" = ymd("2025-9-5"),
-      "value" = 1e6,
-      "data_label" = "Trial\ncommenced"
-    ),
-    aes(x = data_month,
-        y = value, 
-        label = data_label),
-    size = 4,
-    lineheight = .7,
-    hjust = 0,
-    colour = bv.charcoal) +
-=======
   geom_vline(
     xintercept = lubridate::ymd("2025-10-1"),
     colour = bv.charcoal,
@@ -340,10 +292,8 @@ regional_lga_plot =
     hjust = 0,
     colour = bv.charcoal
   ) +
->>>>>>> 96cd0741711ad4b60f86fcde661e1dee365789fd
   scale_y_continuvps(
     name = "Net gambling expenditure, $ million",
-    limits = c(0,8e6), 
     labels = scales::label_number(scale = 1/1e6)) +
   scale_x_date(
     name = NULL,
@@ -351,16 +301,12 @@ regional_lga_plot =
     breaks = seq.Date(from = ymd("2023-6-1"), 
                       to = ymd("2025-6-1"), 
                       by =   "years"),
-    limits = ymd("2023-8-1","2026-3-1"),
     expand = c(0,0)
   ) +
+  coord_cartesian(xlim = ymd("2023-8-1","2026-3-1"), ylim = c(0,8e6)) +
   scale_colour_djcs(palette = "primary", name = NULL, guide = "none")+
   theme_vps_djcs()+
-  theme(legend.position = "right"); 
-
-suppressWarnings(plot(regional_lga_plot))
-
-
+  theme(legend.position = "right")
 ```
 
 As venue data in the package is geocoded it supports analysis using other geographies like Statistical Areas.

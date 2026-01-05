@@ -23,7 +23,7 @@ tidy format.
 
 ## Installation
 
-You can install the development version of vcglR like so:
+You can install `vcglR` like so:
 
 ``` r
 # install.packages("devtools")
@@ -127,8 +127,8 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 28 November 2025. As of version 0.1.3, annual data is up
-to the financial year 2024-25 and monthly data is up to October 2025.
+Last update on 2 January 2026. As of version 0.1.5, annual data is up to
+the financial year 2024-25 and monthly data is up to November 2025.
 
 ## Possible analysis
 
@@ -168,27 +168,30 @@ measure the effect on gambling expenditure, noting we will be able to
 compare Monash and Dandenong with neighbouring LGAs. There are also some
 risks of players shifting to neighbouring venues to avoid the trial.
 
-<img src="man/figures/README-make_melb_map-1.png" width="80%" />
+<img src="man/figures/README-make_melb_map-1.png" alt="" width="80%" />
 
 I will update the package as monthly data is released, so it will be
 possible to observe any effect on expenditure using the LGA level data
 as shown below.
 
-<img src="man/figures/README-lga_expend_plot-1.png" width="80%" />
+<img src="man/figures/README-lga_expend_plot-1.png" alt="" width="80%" />
 
 Gaming machines in Ballarat have few substitutes, so players will find
 it more difficult to move to neighbouring venues to avoid the trial.
 
-<img src="man/figures/README-make_ballarat_map-1.png" width="80%" />
+    #> Warning: Removed 2 rows containing missing values or values outside the
+    #> scale range (`geom_text()`).
+
+<img src="man/figures/README-make_ballarat_map-1.png" alt="" width="80%" />
 
 This means comparisons for Ballarat will need to be made against similar
 regional centres rather than neighbouring LGAs. For example.
 
-<img src="man/figures/README-regional_expend_plot-1.png" width="80%" />
+<img src="man/figures/README-regional_expend_plot-1.png" alt="" width="80%" />
 
 As venue data in the package is geocoded it supports analysis using
 other geographies like Statistical Areas.
 
-<img src="man/figures/README-make_melb_sa3_map-1.png" width="80%" />
+<img src="man/figures/README-make_melb_sa3_map-1.png" alt="" width="80%" />
 
-<img src="man/figures/README-use_pop-1.png" width="80%" />
+<img src="man/figures/README-use_pop-1.png" alt="" width="80%" />
