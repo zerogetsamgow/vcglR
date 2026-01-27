@@ -1,12 +1,11 @@
 Package: vcglR
 Title: Victorian gambling data in tidy format
-Version: 0.1.5
+Version: 0.1.6
 Authors@R: 
     person("Sam", "Gow", , "sam.gow@gmail.com", role = c("aut", "cre"))
 Description: This package contains Victorian gambling data in tidy formats. Current data is limited
     to annual gaming machine data by venue and monthly gaming machine data by local government area.
-    As of version 0.1.5, annual data is up to the financial year 2024-25 and monthly data is up to 
-    November 2025.
+    Refer to README for details of latest data.
 License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -15,8 +14,14 @@ Depends:
     R (>= 3.5)
 LazyData: true
 Imports: 
+    dplyr,
+    lubridate,
+    purrr,
     stringdist,
-    stringr
+    stringr,
+    tibble,
+    tidyr,
+    tidyselect
 URL: https://github.com/zerogetsamgow/vcglR
 BugReports: https://github.com/zerogetsamgow/vcglR/issues
 Suggests: 

@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "80%"
+  out.width = "100%",
+  dpi = 200
 )
 library(tidyverse)
 library(sf)
@@ -18,7 +19,6 @@ library(rvest)
 ```
 
 # vcglR
-
 
 The Victorian gambling regulator publishes gaming machine data by venue and local government area [on its website.](https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data)
 
@@ -41,7 +41,6 @@ devtools::install_github("zerogetsamgow/vcglR")
 
 ## Gaming venue data
 
-
 Data is stored as `egm_venue_data.rda` and `egm_lga_data.rda` allowing it to be loaded into R from the pacakge:
 
 ```{r}
@@ -49,8 +48,6 @@ egm_data = vcglR::egm_venue_data
 
 dplyr::glimpse(egm_data)
 ```
-
-
 
 Cleaning consists of:
 
@@ -90,16 +87,13 @@ Cleaning consists of:
 
 -   cleaning the date information for each financial year and saving it as a date variable `financial_year` and month of data `data_month` variable.
 
-
 ## Last updated
 
-Last update on 2 January 2026. As of version 0.1.5, annual data is up to the financial year 2024-25 and monthly data is up to November 2025.
-
+Last update ond `r format.Date(Sys.Date(),"%d %B %Y")`. Annual data is up to the `r fy::date2fy(Sys.Date()) |> fy::prev_fy()` financial year and monthly data is up to `r (lubridate::round_date(Sys.Date(), unit = "month") - lubridate::days(1) - lubridate::dmonths(1)) |> format.Date("%B %Y")`.
 
 ## Possible analysis
 
 The following provides an example of some of the analysis possible with vcglR.
-
 
 The Victorian Government has announced a trial of mandatory account-based play at select venues from September. See <https://www.premier.vic.gov.au/new-trial-help-prevent-gambling-harm>
 
@@ -186,7 +180,7 @@ ggplot() +
     data =
       tibble(
         "data_month" = ymd("2025-10-10"),
-        "value" = 1e6,
+        "value" = 1.5e6,
         "data_label" = "Trial\ncommenced"
       ),
     aes(
@@ -217,7 +211,7 @@ ggplot() +
   theme(legend.position = "right")
 ```
 
-Gaming machines in Ballarat have few substitutes, so players will find it more difficult to move to neighbouring venues to avoid the trial. 
+Gaming machines in Ballarat have few substitutes, so players will find it more difficult to move to neighbouring venues to avoid the trial.
 
 ```{r make_ballarat_map, echo = FALSE}
 
@@ -279,7 +273,7 @@ ggplot() +
     data =
       tibble(
         "data_month" = ymd("2025-10-10"),
-        "value" = 1e6,
+        "value" = 1.5e6,
         "data_label" = "Trial\ncommenced"
       ),
     aes(

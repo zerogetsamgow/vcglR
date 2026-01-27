@@ -119,8 +119,8 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 2 January 2026. As of version 0.1.5, annual data is up to
-the financial year 2024-25 and monthly data is up to November 2025.
+Last update ond 27 January 2026. Annual data is up to the 2024-25
+financial year and monthly data is up to December 2025.
 
 ## Possible analysis
 
