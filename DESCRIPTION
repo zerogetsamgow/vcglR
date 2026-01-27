@@ -14,25 +14,25 @@ Depends:
     R (>= 3.5)
 LazyData: true
 Imports: 
-    dplyr,
-    lubridate,
-    purrr,
     stringdist,
-    stringr,
-    tibble,
-    tidyr,
-    tidyselect
+    stringr
 URL: https://github.com/zerogetsamgow/vcglR
 BugReports: https://github.com/zerogetsamgow/vcglR/issues
 Suggests: 
+    dplyr,
     ggplot2,
     ggrepel,
     knitr,
+    lubridate,
+    purrr,
     readxl,
     rmarkdown,
     rvest,
     scales,
     sf,
     strayr,
+    tibble,
+    tidyr,
+    tidyselect,
     vpstheme
 VignetteBuilder: knitr
