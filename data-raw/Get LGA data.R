@@ -46,7 +46,8 @@ player_loss = raw_egm_lga_data |>
   slice_head(n=12) |> 
   mutate(month = 12:1,
          financial_year = str_extract(sheet,"[0-9]{4}-[0-9]{4}") |> fy::fy2date(),
-         data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months")) |> 
+         data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months"),
+         data_month = data_month - days(1)) |> 
   mutate(value = as.numeric(value),
          name = "Expenditure")
 
@@ -61,7 +62,8 @@ venues = raw_egm_lga_data |>
   slice_head(n=12) |> 
   mutate(month = 12:1,
          financial_year = str_extract(sheet,"[0-9]{4}-[0-9]{4}") |> fy::fy2date(),
-         data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months")) |> 
+         data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months"),
+         data_month = data_month - days(1)) |> 
   mutate(value = as.numeric(value),
          name = "Venues")
 
@@ -75,7 +77,8 @@ machines = raw_egm_lga_data |>
   slice_head(n=12) |> 
   mutate(month = 12:1,
          financial_year = str_extract(sheet,"[0-9]{4}-[0-9]{4}") |> fy::fy2date(),
-         data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months")) |> 
+         data_month = ceiling_date(floor_date(financial_year, "months") - months(month-1),"months"),
+         data_month = data_month - days(1)) |> 
   mutate(value = as.numeric(value),
          name = "EGMs")
 
