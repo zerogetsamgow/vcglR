@@ -89,7 +89,7 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update ond `r format.Date(Sys.Date(),"%d %B %Y")`. Annual data is up to the `r fy::date2fy(Sys.Date()) |> fy::prev_fy()` financial year and monthly data is up to `r (lubridate::round_date(Sys.Date(), unit = "month") - lubridate::days(1) - lubridate::dmonths(1)) |> format.Date("%B %Y")`.
+Last update on `r format.Date(Sys.Date(),"%d %B %Y")`. Annual data is up to the `r fy::date2fy(Sys.Date()) |> fy::prev_fy()` financial year and monthly data is up to `r (lubridate::round_date(Sys.Date(), unit = "month") - lubridate::days(1) - lubridate::dmonths(1)) |> format.Date("%B %Y")`.
 
 ## Possible analysis
 
@@ -154,7 +154,22 @@ metro_lga_data =
   filter(str_detect(lga_name,"Casey|Dandenong|Monash|Eira|Knox|Whitehorse|Kingston")) |> 
   filter(str_detect(measure_type, "Exp"), !is.na(value)) 
 
+rect =  data.frame(
+  xmin = as.Date("2025-10-1"),
+  xmax = as.Date("2025-12-1"),
+  ymin = -Inf,  # Full vertical shading
+  ymax = Inf
+)
 ggplot() +
+  geom_rect(
+    data = rect,
+    inherit.aes = FALSE, 
+    aes(
+      xmin = xmin, 
+      xmax = xmax, 
+      ymin = ymin, 
+      ymax = ymax),
+    fill = bv.smoke)+
   geom_line(
     metro_lga_data,
     mapping = aes(x=data_month,y = value, colour = lga_name)
@@ -176,6 +191,7 @@ ggplot() +
     xintercept = lubridate::ymd("2025-10-1"),
     colour = bv.charcoal,
     linetype = 2) +
+  
   geom_text(
     data =
       tibble(
@@ -247,6 +263,15 @@ regional_lga_data =
 
 
 ggplot() +
+  geom_rect(
+    data = rect,
+    inherit.aes = FALSE, 
+    aes(
+      xmin = xmin, 
+      xmax = xmax, 
+      ymin = ymin, 
+      ymax = ymax),
+    fill = bv.smoke)+
   geom_line(
     regional_lga_data,
     mapping = aes(x=data_month,y = value, colour = lga_name)
