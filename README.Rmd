@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  dpi = 200
+  dpi = 250
 )
 library(tidyverse)
 library(sf)
@@ -205,7 +205,7 @@ ggplot() +
                       by =   "years"),
     expand = c(0,0)
   ) +
-  coord_cartesian(xlim = ymd("2023-8-1","2026-3-1"), ylim = c(0,16e6)) +
+  coord_cartesian(xlim = ymd("2023-8-1","2026-6-1"), ylim = c(0,16e6)) +
   scale_colour_dffh(palette = "extended", name = NULL, guide = "none")+
   theme_vps_djcs()+
   theme(legend.position = "right")
@@ -297,7 +297,7 @@ ggplot() +
                       by =   "years"),
     expand = c(0,0)
   ) +
-  coord_cartesian(xlim = ymd("2023-8-1","2026-3-1"), ylim = c(0,8e6)) +
+  coord_cartesian(xlim = ymd("2023-8-1","2026-6-1"), ylim = c(0,8e6)) +
   scale_colour_djcs(palette = "primary", name = NULL, guide = "none")+
   theme_vps_djcs()+
   theme(legend.position = "right")
