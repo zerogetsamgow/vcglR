@@ -82,8 +82,8 @@ machines = raw_egm_lga_data |>
   mutate(value = as.numeric(value),
          name = "EGMs")
 
-
-egm_lga_data = 
+# Gather new data
+new_lga_data = 
   bind_rows(
     player_loss,
     machines,
@@ -91,7 +91,16 @@ egm_lga_data =
   ungroup() |> 
   select(lga_name, financial_year, data_month, "measure_type" = name, value) 
 
+# Add new data to old data
+egm_lga_data =
+  bind_rows(
+    vcglR::egm_lga_data |> drop_na(),
+    new_lga_data
+  ) |> 
+  unique()
 
 
 # Save data
 usethis::use_data(egm_lga_data, overwrite = TRUE)
+
+

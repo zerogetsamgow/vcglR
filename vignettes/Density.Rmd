@@ -12,12 +12,12 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   out.width = "100%",
-  dpi = 200
+  dpi = 250
 )
 library(sf)
 ```
 
-```{r setup}
+```{r setup, include = FALSE}
 library(vcglR)
 ```
 
@@ -137,7 +137,7 @@ sa3_shape =
 ```
 
 
-This correlation can be seen in Figure 1 below, which shows gaming machine density and net gambling expenditure per person at the statistical area (SA3) level in Victoria. The three regions highlighted are that participated in the mandatory carded play trial.
+This correlation can be seen in Figure 1 below, which shows gaming machine density and net gambling expenditure per person at the statistical area (SA3) level in Victoria. The three regions highlighted are those that participated in the mandatory carded play trial in 2025.
 
 ## Figure 1
 ```{r use_pop, echo = FALSE}
@@ -380,6 +380,18 @@ ggplot2::ggplot() +
          stringr::str_c(
            "Gaming machines and net gambling ",
            "expenditure overtime in select Victorian SA3s"))
+```
+
+These patterns highlight
+
+
+```{r find_discontinuities}
+
+lga_rdd_tbl =
+  egm_lga_data |> 
+  filter(measure_type == "EGMs") |> 
+  group_by(lga_name) 
+
 ```
 
 [^1]: [Turning Point, 2015, Problem Gambling in Victoria: Identifying local area community and gaming industry risk and protective factors](https://responsiblegambling.vic.gov.au/documents/95/Research-report-pg-in-vic-community-industry-risk-protective-factors.pdf)
