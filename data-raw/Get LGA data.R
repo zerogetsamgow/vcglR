@@ -91,7 +91,7 @@ new_lga_data =
   ungroup() |> 
   select(lga_name, financial_year, data_month, "measure_type" = name, value) 
 
-# Add new data to old data
+# Add new data to old data - step added as VGCCC removes sheets of data from time to time
 egm_lga_data =
   bind_rows(
     vcglR::egm_lga_data |> drop_na(),
