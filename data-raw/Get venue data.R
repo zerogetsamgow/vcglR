@@ -104,5 +104,15 @@ egm_venue_data =
 missing = egm_venue_data |>
   filter(is.na(lat)) 
 
+if(nrow(missing)>0) {warning("Some venues are missing location data")}
+
+# Combine with existing data to ensure no data is lost when VGCCC rolls over data years
+egm_venue_data =
+  bind_rows(
+    egm_venue_data,
+    vcglR::egm_venue_data
+  ) |> 
+  unique()
+
 # Save data
 usethis::use_data(egm_venue_data, overwrite = TRUE)

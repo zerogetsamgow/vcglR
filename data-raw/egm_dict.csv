@@ -1,4 +1,5 @@
 venue_abbr,venue_name,venue_old
+388 Sportsbar,The Brass Monkey on Lonsdale,The Brass Monkey on Lonsdale
 Abruzzo Club,Abruzzo Club,Abruzzo Club
 Aces Sporting Club,Aces Sporting Club,Aces Town and Country Club
 Albion Charles Hotel,Albion Charles Hotel,Albion Charles Hotel
@@ -26,10 +27,10 @@ Bairnsdale Club,Bairnsdale Club,Bairnsdale Club
 Bairnsdale RSL,Bairnsdale RSL,Bairnsdale RSL
 Bakers Arms Hotel,Bakers Arms Hotel,Bakers Arms Hotel
 Balaclava Hotel,Balaclava Hotel,Balaclava Hotel
+Ball Court Hotel,Ball Court Hotel,Ballcourt Hotel
 Ballarat and District Trotting Club,Ballarat & District Trotting Club,Ballarat and District Trotting Club Inc
 Ballarat Golf Club,Ballarat Golf Club,Ballarat Golf Club
 Ballarat Leagues Club,Ballarat Leagues Club,Ballarat Leagues Club
-Ball Court Hotel,Ball Court Hotel,Ballcourt Hotel
 Barwon Heads Hotel,Barwon Heads Hotel,Barwon Heads Hotel
 Batman's Hill on Collins,Batman's Hill on Collins,Batman's Hill on Colins
 Baxter Tavern Hotel Motel,Baxter Tavern Hotel Motel,Baxter Tavern Hotel Motel
@@ -159,7 +160,6 @@ Epping Hotel,Epping Hotel,Epping Hotel
 Epping Plaza Hotel,Epping Plaza Hotel,Epping Plaza Hotel
 Epping RSL,Epping RSL,Epping RSL
 Esplanade Hotel,Esplanade Hotel (Inverloch),Esplanade Hotel - Inverloch
-Queenscliff Brew House,Esplanade Hotel (Queenscliff),Esplanade Hotel - Queenscliff
 Essendon Football Club,Essendon Football & Community Sporting C,Essendon Football Club
 Excelsior Hotel,Excelsior Hotel,Excelsior Hotel-Motel
 Fairfield RSL,Fairfield and Alphington RSL,Fairfield & Alphington RSL
@@ -169,7 +169,6 @@ Ferntree Gully Bowling Club,Ferntree Gully Bowling Club,Fawkner RSL
 Ferntree Gully Hotel,Ferntree Gully Hotel,Ferntree Gully Hotel
 First & Last Hotel,First & Last Hotel,First & Last Hotel
 Flying Horse Bar and Brewery,Flying Horse Bar and Brewery,Flying Horse Bar and Brewery
-Western Bulldogs,Western Bulldogs,Footscray Football Club
 Foresters Arms Hotel,Foresters Arms Hotel,Foresters Arms Hotel
 Foster Golf Club,Foster Golf Club,Foster Golf Club
 Fountain Gate Taverner,Fountain Gate Taverner,Fountain Gate Taverner
@@ -223,7 +222,6 @@ Hill Top Golf and Country Club,Hill Top Golf and Country Club,Hilltop Golf and C
 Hogans Hotel,Hogans Hotel,Hogans Hotel
 Hoppers Crossing Club,Hoppers Crossing Club,Hoppers Crossing Club
 Hoppers Crossing Sports Club,Hoppers Crossing Sports Club,Hoppers Crossing Sports Club
-Italian Sports Club of Werribee,Italian Sports Club of Werribee,Italian Sports Club of Werribee
 Horsham RSL,Horsham RSL,Horsham RSL
 Horsham Sports & Community Club,Horsham Sports & Community Club,Horsham Sports & Community Club
 Hotel 520 on Sayers,Hotel 520 on Sayers,Hotel 520 on Sayers
@@ -231,9 +229,12 @@ Hotel Sorrento,Hotel Sorrento,Hotel Sorrento
 Hurstbridge Bowling Club,Hurstbridge Bowling Club,Hurstbridge Bowling Club
 Isle of Wight Hotel,Isle of Wight Hotel,Isle of Wight Hotel
 Italian Australian Social Club,Italian Australian Social Club,Italian Australian Sporting and Social C
+Italian Sports Club of Werribee,Italian Sports Club of Werribee,Italian Sports Club of Werribee
 Ivanhoe Hotel,Ivanhoe Hotel,Ivanhoe Hotel
+Jim Dandy Hotel,The Jim Dandy Hotel,Old Dandy Inn
 Jokers on Ryrie,Jokers on Ryrie,Jokers on Ryrie
 Junction Club,MVRC Junction Club,Victorian Harness Racing Sports Club
+Junction Club,MVRC Junction Club,MOONEE PONDS TAVERN (JUNCTION TABARET)
 Junction Hotel,Junction Hotel,Junction Hotel
 Kangaroo Flat Sports Club,Kangaroo Flat Sports Club,Kangaroo Flat Sports Club
 Karingal Bowling Club,Karingal Bowling Club,Karingal Bowls Club
@@ -252,8 +253,8 @@ Korumburra Hotel,Korumburra Hotel,Korumburra Hotel
 Kyabram Club,Kyabram Club,Kyabram Club
 Kyneton Bowling Club,Kyneton Bowling Club,Kyneton Bowls Club
 Kyneton RSL,Kyneton RSL,Kyneton RSL
-Lakes Entrance RSL,Lakes Entrance RSL,Lakes Entrance RSL
 Lakes Entrance Bowls Club,Lakes Entrance Bowls Club,Lakes Entrance Bowls Club
+Lakes Entrance RSL,Lakes Entrance RSL,Lakes Entrance RSL
 Lakeside Club,Sale Community Bowls Club,Sale Community Sports Club
 Lalor Bowling Club,Lalor Bowling Club,Lalor Bowling Club
 Langwarrin Hotel,Langwarrin Hotel,Langwarrin Hotel
@@ -307,8 +308,6 @@ Monbulk Bowling Club,Monbulk Bowling Club,Monbulk Bowling Club
 Montmorency RSL,Montmorency RSL,Montmorency RSL
 Moonee Valley Racing Club,Moonee Valley Racing Club,Moonee Valley Legends
 Mooroopna Golf Club,Mooroopna Golf Club,Mooroopna Golf Club
-The Epsom,Mordialloc Sporting Club,The Kingston Club
-The Epsom,The Epsom,Mordialloc Sporting Club
 Moreland Hotel,Moreland Hotel,Moreland Hotel
 Mornington Golf Club,Mornington Golf Club,Mornington Country Golf Club
 Mornington on Tanti Hotel,Mornington on Tanti Hotel,Mornington on Tanti Hotel
@@ -331,6 +330,7 @@ Noble Park RSL,Noble Park RSL,Noble Park RSL
 Norlane Hotel,Norlane Hotel,Norlane Hotel
 North Ballarat Sports Club,North Ballarat Sports Club,North Ballarat Sports
 North Melbourne Football Social Club,North Melbourne Football Social Club,North Melbourne Football Social Club
+North Pier Hotel,North Pier Hotel,The Continental Hotel
 North Shore Sports Club,North Shore Sports Club,North Shore Sports Club
 Northcote Park Football Club,Northcote Park Football Club,Northcote Park Football Club
 Northcote RSL,Northcote RSL,Northcote RSL
@@ -339,7 +339,6 @@ Oakleigh - Carnegie RSL,Oakleigh - Carnegie RSL (Sub-Branch),Oakleigh - Carnegie
 Oakleigh Junction Hotel,Oakleigh Junction Hotel,Oakleigh Junction Hotel
 Oasis Oz Hotel,Oasis Oz Hotel,Oasis Oz Hotel
 Ocean Grove Bowling Club,Ocean Grove Bowling Club,Ocean Grove Bowling Club
-Jim Dandy Hotel,The Jim Dandy Hotel,Old Dandy Inn
 Old England Hotel,Old England Hotel,Old England Hotel
 Olinda Creek Hotel,Olinda Creek Hotel,Olinda Hotel
 Olive Tree Hotel,Olive Tree Hotel,Olive Tree Hotel
@@ -368,9 +367,12 @@ Portland RSL,Portland RSL Memorial Bowling Club,Portland RSL
 Powell Hotel,Powell Hotel,Powell Hotel
 Prahran Football Social Club,Prahran Football Social Club,Prahran Social Club
 Preston Hotel,Preston Hotel,Preston Hotel
+Preston-Reservoir Bowls Club,Preston-Reservoir Bowls Club,Reservoir Bowling Club
 Prince Mark Hotel,Prince Mark Hotel,Prince Mark Hotel (Tatts)
 Pullman Melbourne on Swanston,Pullman Melbourne on Swanston,Mercure Grand Hotel on Swanston
+Pullman Melbourne on the Park,Treasure Cove- Hilton on The Park,Treasure Cove- Hilton on The Park
 Queenscliff Bowls Club,Queenscliff Bowling Tennis and Croquet C,Queenscliff Bowls Club
+Queenscliff Brew House,Esplanade Hotel (Queenscliff),Esplanade Hotel - Queenscliff
 Racecourse Hotel,Racecourse Hotel (Malvern East),Racecourse Hotel (Malvern East)
 Racecourse Hotel,Racecourse Hotel (Werribee),Racecourse Hotel
 Rafferty's Tavern,Rafferty's Tavern,Rafferty's Tavern
@@ -378,7 +380,6 @@ Railway Club Hotel,Railway Club Hotel,Railway Club Hotel
 Red Cliffs Club,Red Cliffs Club,Red Cliffs Club
 Red Lion Hotel,Red Lion Hotel,Red Lion Hotel
 Reggio Calabria Club,Reggio Calabria Club,Reggio Calabria Club
-Preston-Reservoir Bowls Club,Preston-Reservoir Bowls Club,Reservoir Bowling Club
 Reservoir RSL,Reservoir RSL,Reservoir RSL
 Richmond Henty Hotel,"The Richmond Henty Hotel, Portland",Richmond Henty Hotel
 Richmond Tavern,Richmond Tavern,Richmond Tavern
@@ -398,9 +399,9 @@ Roxburgh Park Hotel,Roxburgh Park Hotel,Roxburgh Park Hotel
 Royal Exchange Hotel,Royal Exchange Hotel,Royal Exchange Hotel
 Royal Hotel,Royal Hotel (Benalla),Royal Hotel Benalla
 Royal Hotel,Royal Hotel (Daylesford),Royal Hotel Daylesford
+Royal Hotel,Royal Hotel (Sunbury),Royal Hotel Sunbury
 Royal Hotel ,Royal Hotel (Essendon),Royal Hotel Essendon
 Royal Hotel ,Royal Hotel (Horsham),Royal Hotel Horsham
-Royal Hotel,Royal Hotel (Sunbury),Royal Hotel Sunbury
 Royal Oak Hotel,Royal Oak Hotel,Royal Oak Hotel - Cheltenham
 Royal Oak Richmond,Royal Oak Richmond,Royal Oak - Richmond Football Club
 Rubicon Hotel,Rubicon Hotel,Rubicon Hotel Motel
@@ -432,12 +433,10 @@ Sphinx Entertainment Centre,Sphinx Entertainment Centre,Sphinx Hotel
 Sporting Legends Club,Sporting Legends Club,Sporting Legends Club
 Sportspark,Sportspark Gaming and Entertainment Cent,Sportspark
 Springvale RSL,Springvale RSL,Springvale RSL Club
-The Clubhouse Bar & Bistro,The Clubhouse Bar & Bistro,SS & A Wodonga West
 St Albans Hotel,St Albans Hotel,St Albans Hotel
 St Albans Sports Club,St Albans Sports Club,St Albans Sports Club
 St Arnaud Sporting Club,St Arnaud Sporting Club,St Arnaud Sporting Association Inc
 St George Workers Club,St George Workers Club,St George Workers Club
-The Lincoln,The Lincoln,St Ives Biere Cafe
 St Kilda Army and Navy Club,St Kilda Army and Navy Club,St Kilda Army & Navy Club
 St Kilda Football Club,St Kilda Football Club,St Kilda Football Social Club
 Stamford Hotel,Stamford Hotel,Stamford Hotel
@@ -463,18 +462,20 @@ Templestowe Hotel,Templestowe Hotel,Templestowe Hotel
 Terminus Hotel,Terminus Hotel,Terminus Hotel
 The Bay & Bridge Hotel,The Bay & Bridge Hotel,The Bay & Bridge Hotel
 The Borough Club,The Borough Club,The Borough Club
-The Brass Monkey on Lonsdale,The Brass Monkey on Lonsdale,The Brass Monkey on Lonsdale
 The Bridge Hotel,The Bridge Hotel,Doyles Bridge Hotel
 The Brook on Sneydes,The Brook on Sneydes,The Brook on Sneydes
 The Chase Hotel,The Chase Hotel,Vegas Chas - Forest Hill Chase
 The Club,The Club,The Club
+The Clubhouse Bar & Bistro,The Clubhouse Bar & Bistro,SS & A Wodonga West
 The Coach and Horses,The Coach and Horses,The Coach and Horses
-North Pier Hotel,North Pier Hotel,The Continental Hotel
 The Cove Hotel,The Cove Hotel,The Cove Hotel
+The Epsom,Mordialloc Sporting Club,The Kingston Club
+The Epsom,The Epsom,Mordialloc Sporting Club
 The Foundry Hotel Complex,The Foundry Hotel Complex,The Foundry Hotel Complex
 The Grand at Dandenong,The Grand at Dandenong,The Grand at Dandenong
 The International,The International,The International
 The Lakes Entertainment Centre,The Lakes Entertainment Centre,The Lakes Entertainment Centre
+The Lincoln,The Lincoln,St Ives Biere Cafe
 The Meeting Place,The Meeting Place,Melbourne Central Pokies
 The Miners Tavern,The Miners Tavern,The Miners Tavern
 The Moonee Ponds Club,The Moonee Ponds Club,North Suburban Club
@@ -489,6 +490,7 @@ The Settlement at Cranbourne,The Settlement at Cranbourne,Settlement at Cranbour
 The Tigers Clubhouse,The Tigers Clubhouse,The Tigers Clubhouse
 The Vale Hotel,The Vale Hotel,Springvale Hotel
 The Vic Inn,The Vic Inn,Vic Inn Williamstown
+The Victoria Hotel,The Victoria Hotel Yarraville,Victoria on Hyde Hotel
 Tooradin Sports Club,Tooradin & District Sports Club,Tooradin Sports Club
 Torquay Golf Club,Torquay Golf Club,Torquay Golf Club
 Torquay Hotel,Torquay Hotel,Torquay Hotel
@@ -496,7 +498,6 @@ Tower Hotel,Tower Hotel,Tower Hotel
 Town Hall Hotel,Town Hall Hotel Stawell,Town Hall Hotel
 Traralgon Bowls Club,Traralgon Bowls Club,Traralgon Bowls Club
 Traralgon RSL,Traralgon RSL,Traralgon RSL
-Pullman Melbourne on the Park,Treasure Cove- Hilton on The Park,Treasure Cove- Hilton on The Park
 Trios Sports Club,Trios Sports Club,Trios Tabaret
 Tudor Inn Hotel,Tudor Inn Hotel,Tudor Inn Hotel
 Union Club Hotel,Union Club Hotel,Union Club Hotel
@@ -505,7 +506,6 @@ Valley Inn Hotel,Valley Inn Hotel,Valley Inn Hotel
 Vegas at Waverley Gardens,Vegas at Waverley Gardens,Hawthorn Football Club - Waverley
 Veneto Club,Veneto Club,Veneto Social Club
 Victoria Hotel ,Victoria Hotel (Shepparton),Victoria Hotel - Shepparton
-The Victoria Hotel,The Victoria Hotel Yarraville,Victoria on Hyde Hotel
 Victorian Tavern,Victorian Tavern,Victorian Tavern
 Village Belle Hotel,Village Belle Hotel,Village Belle Hotel
 Village Green Hotel,Village Green Hotel,Village Green Hotel
@@ -532,6 +532,7 @@ West Heidelberg RSL,West Heidelberg RSL,West Heidelberg RSL
 West Side Horsham,West Side Horsham,West Side Tabaret
 West Waters Hotel,West Waters Hotel,West Waters Hotel
 Westend Market Hotel,Westend Market Hotel,Westend Market Hotel
+Western Bulldogs,Western Bulldogs,Footscray Football Club
 Westernport Hotel,Westernport Hotel,Westernport Hotel
 Westmeadows Tavern,Westmeadows Tavern,Westmeadows Tavern
 Westside Taverner,Westside Taverner,Westside Hotel/Motel
@@ -550,4 +551,3 @@ Yarraville Club Cricket Club,Yarraville Club Cricket Club,Yarraville Cricket Clu
 Yarraville-Footscray Bowling Club,Yarraville-Footscray Bowling Club,Yarraville Footscray Bowling Club
 York on Lilydale Taverner Resort,York on Lilydale Taverner Resort,York on Lilydale Taverner Resort
 Zagames Caulfield Club Hotel,Zagames Caulfield Club Hotel,Zagame's Caulfield Club Hotel
-Junction Club,MVRC Junction Club,MOONEE PONDS TAVERN (JUNCTION TABARET)
