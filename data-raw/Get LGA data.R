@@ -35,7 +35,7 @@ raw_egm_lga_data =   # Get html from following url and extract hrefs for xlsx fi
     data=pmap(list(download,sheet), readxl::read_excel, skip = 9, col_types = "text")) |> 
   unnest(data)
 
-
+# Get player_loss data
 player_loss = raw_egm_lga_data |> 
   janitor::clean_names() |> 
   select(url, download, sheet, lga_name, contains("player")) |> 
@@ -51,7 +51,7 @@ player_loss = raw_egm_lga_data |>
   mutate(value = as.numeric(value),
          name = "Expenditure")
 
-
+# Get venues data
 venues = raw_egm_lga_data |> 
   janitor::clean_names() |> 
   select(url, download, sheet, lga_name, contains("venue")) |> 
@@ -67,6 +67,7 @@ venues = raw_egm_lga_data |>
   mutate(value = as.numeric(value),
          name = "Venues")
 
+# Get machines data
 machines = raw_egm_lga_data |> 
   janitor::clean_names() |> 
   select(url, download, sheet, lga_name, contains("eg_")) |> 
