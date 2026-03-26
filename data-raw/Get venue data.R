@@ -118,6 +118,8 @@ egm_venue_data =
       filter_out(financial_year == max_year) |>  
       mutate(financial_year = fy::date2fy(fy_date))
   ) |> 
+  dplyr::arrange(venue_name, fy_date) |> 
+  dplyr::filter(fy_date<Sys.Date()) |> 
   unique()
 
 # Save data

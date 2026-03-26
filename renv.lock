@@ -618,38 +618,6 @@
       "Package": "callr",
       "Version": "3.7.6",
       "Source": "Repository",
-      "Title": "Call R from R",
-      "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0001-7098-9676\")), person(\"Winston\", \"Chang\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(\"Ascent Digital Services\", role = c(\"cph\", \"fnd\")) )",
-      "Description": "It is sometimes useful to perform a computation in a separate R process, without affecting the current R process at all.  This packages does exactly that.",
-      "License": "MIT + file LICENSE",
-      "URL": "https://callr.r-lib.org, https://github.com/r-lib/callr",
-      "BugReports": "https://github.com/r-lib/callr/issues",
-      "Depends": [
-        "R (>= 3.4)"
-      ],
-      "Imports": [
-        "processx (>= 3.6.1)",
-        "R6",
-        "utils"
-      ],
-      "Suggests": [
-        "asciicast (>= 2.3.1)",
-        "cli (>= 1.1.0)",
-        "mockery",
-        "ps",
-        "rprojroot",
-        "spelling",
-        "testthat (>= 3.2.0)",
-        "withr (>= 2.3.0)"
-      ],
-      "Config/Needs/website": "r-lib/asciicast, glue, htmlwidgets, igraph, tibble, tidyverse/tidytemplate",
-      "Config/testthat/edition": "3",
-      "Encoding": "UTF-8",
-      "Language": "en-US",
-      "RoxygenNote": "7.3.1.9000",
-      "NeedsCompilation": "no",
-      "Author": "Gábor Csárdi [aut, cre, cph] (<https://orcid.org/0000-0001-7098-9676>), Winston Chang [aut], Posit Software, PBC [cph, fnd], Ascent Digital Services [cph, fnd]",
-      "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
       "Repository": "CRAN"
     },
     "cellranger": {
@@ -5076,54 +5044,14 @@
     },
     "vpstheme": {
       "Package": "vpstheme",
-      "Version": "2.6.0",
+      "Version": "2.7.0",
       "Source": "GitHub",
-      "Type": "Package",
-      "Title": "A collection of themes and functions for R users in the VPS",
-      "Authors@R": "c( person(\"Sam\", \"Gow\", email = \"sam.gow@gmail.com\", role = c(\"aut\", \"cre\")) )",
-      "Description": "The main purpose of vpstheme is to enable R users in the Victorian Public Service to use the colours and fonts defined in the [Brand Victoria Guidelines](https://www.vic.gov.au/brand-victoria-guidelines) to create compliant visualisations in ggplot.",
-      "License": "CC BY 4.0",
-      "Encoding": "UTF-8",
-      "LazyData": "true",
-      "URL": "https://github.com/zerogetsamgow/vpstheme",
-      "BugReports": "https://github.com/zerogetsamgow/vpstheme/issues",
-      "Depends": [
-        "R (>= 3.5)"
-      ],
-      "RoxygenNote": "7.3.3",
-      "Imports": [
-        "ggplot2",
-        "ggthemes",
-        "palettes",
-        "showtext",
-        "stringdist",
-        "sysfonts",
-        "dplyr",
-        "stringr",
-        "colorspace"
-      ],
-      "Suggests": [
-        "knitr",
-        "forcats",
-        "vdiffr",
-        "tibble",
-        "scales",
-        "rmarkdown",
-        "testthat (>= 3.0.0)",
-        "curl",
-        "jsonlite"
-      ],
-      "VignetteBuilder": "knitr",
-      "Config/testthat/edition": "3",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "vpstheme",
       "RemoteUsername": "zerogetsamgow",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "6ccba2e21ae403da1917e3fc62054ae68cdaba08",
-      "NeedsCompilation": "no",
-      "Author": "Sam Gow [aut, cre]",
-      "Maintainer": "Sam Gow <sam.gow@gmail.com>"
+      "RemoteRepo": "vpstheme",
+      "RemoteRef": "master",
+      "RemoteSha": "9d2530da1b3fec1b1b62a5eebb689db95a55b394"
     },
     "vroom": {
       "Package": "vroom",

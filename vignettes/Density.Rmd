@@ -389,8 +389,8 @@ These patterns highlight
 
 lga_rdd_tbl =
   egm_lga_data |> 
-  filter(measure_type == "EGMs") |> 
-  group_by(lga_name) 
+  dplyr::filter(measure_type == "EGMs") |> 
+  dplyr::group_by(lga_name) 
 
 ```
 
