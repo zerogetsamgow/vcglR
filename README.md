@@ -119,7 +119,7 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 27 March 2026. Annual data is up to the 2024-25 financial
+Last update on 31 March 2026. Annual data is up to the 2024-25 financial
 year and monthly data is up to February 2026.
 
 ## Possible analysis
@@ -128,7 +128,7 @@ The following provides an example of some of the analysis possible with
 vcglR.
 
 The Victorian Government has announced a trial of mandatory
-account-based play at select venues from September. See
+account-based play at dplyr::select venues from September. See
 <https://www.premier.vic.gov.au/new-trial-help-prevent-gambling-harm>
 
 The trial will run across all 43 venues with gaming machines in Monash,
@@ -142,15 +142,25 @@ enable mapping and working with other data and geographic areas.
 ``` r
 
 venue_data = vcglR::egm_venue_data |> 
- # filter(fy_date == max(fy_date)) |> 
-  select(contains("name"), contains("type"), value, lat, long, fy_date, financial_year) |> 
-  mutate(is_trial = str_detect(lga_name, "Monash|Dandenong|Ballarat"))
+ # dplyr::filter(fy_date == max(fy_date)) |> 
+  dplyr::select(
+    tidyselect::contains("name"), 
+    tidyselect::contains("type"), 
+    value, lat, long, fy_date, financial_year) |> 
+  dplyr::mutate(
+    is_trial = 
+      stringr::str_detect(
+        lga_name, "Monash|Dandenong|Ballarat"))
 
 
 lga_shapes =
-  strayr::read_absmap("lga2021", remove_year_suffix = TRUE) |> 
-  filter(state_code == 2) |> 
-  mutate(is_trial = str_detect(lga_name, "Monash|Dandenong|Ballarat"))
+  strayr::read_absmap(
+    "lga2021", remove_year_suffix = TRUE) |> 
+  dplyr::filter(state_code == 2) |> 
+  dplyr::mutate(
+    is_trial = 
+      stringr::str_detect(
+        lga_name, "Monash|Dandenong|Ballarat"))
 ```
 
 Some early observations.
