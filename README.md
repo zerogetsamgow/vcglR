@@ -26,8 +26,8 @@ tidy format.
 You can install `vcglR` like so:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("zerogetsamgow/vcglR")
+# install.packages("remotes")
+remotes::install_github("zerogetsamgow/vcglR")
 ```
 
 ## Gaming venue data
@@ -119,8 +119,8 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 31 March 2026. Annual data is up to the 2024-25 financial
-year and monthly data is up to February 2026.
+Last update on 01 May 2026. Annual data is up to the 2024-25 financial
+year and monthly data is up to March 2026.
 
 ## Possible analysis
 

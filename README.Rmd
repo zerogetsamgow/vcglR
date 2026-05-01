@@ -33,8 +33,8 @@ The `vcglR` package reads the `.xlsx` data, cleans it and converts it to tidy fo
 You can install `vcglR` like so:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("zerogetsamgow/vcglR")
+# install.packages("remotes")
+remotes::install_github("zerogetsamgow/vcglR")
 ```
 
 ## Gaming venue data
@@ -124,7 +124,6 @@ lga_shapes =
 
 
 ```
-
 Some early observations.
 
 The trial in metropolitan LGAs should provide easily accessible data to measure the effect on gambling expenditure, noting we will be able to compare Monash and Dandenong with neighbouring LGAs. There are also some risks of players shifting to neighbouring venues to avoid the trial.
@@ -559,6 +558,7 @@ population =
     values_to = "population") |>
   dplyr::mutate(
     population = as.numeric(population),
+    sa3_code = as.character(sa3_code),
     fy_date = stringr::str_c(name,"-6-30") |>
       lubridate::ymd())
 

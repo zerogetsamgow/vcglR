@@ -5,3 +5,5 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
+^\.positai$
+^\.claude$

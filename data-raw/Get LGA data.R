@@ -5,12 +5,12 @@ library(rvest)
 
 raw_egm_lga_data =   # Get html from following url and extract hrefs for xlsx files
   "https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data" |> 
-  read_html() |>
-  html_elements('div [href$="xlsx"]') |>
-  html_attr("href") |> 
-  as_tibble_col("url") |>
+  rvest::read_html() |>
+  rvest::html_elements('div [href$="xlsx"]') |>
+  rvest::html_attr("href") |> 
+  tibble::as_tibble_col("url") |>
   # filter for venue urls
-  filter(str_detect(url, "lga")) |> 
+  filter(str_detect(url, "LGA")) |> 
   # Add stub to urls
   mutate(
     url = str_c("https://www.vgccc.vic.gov.au",url)) |> 
