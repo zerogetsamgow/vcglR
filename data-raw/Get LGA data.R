@@ -63,7 +63,7 @@ player_loss = raw_egm_lga_data |>
     tidyselect::contains("player")) |> 
   dplyr::filter(
     !is.na(lga_name),
-    !str_detect(lga_name,"Published|Please")) |> 
+    !stringr::str_detect(lga_name,"Published|Please")) |> 
   dplyr::mutate(
     lga_name = 
       vpstheme::clean_vic_lga(lga_name)) |> 
@@ -108,11 +108,12 @@ venues = raw_egm_lga_data |>
   dplyr::slice_head(n = 12) |> 
   dplyr::mutate(
     month = 12:1,
-    financial_year = str_extract(sheet,"[0-9]{4}-[0-9]{4}") |> fy::fy2date(),
+    financial_year = 
+      stringr::str_extract(sheet,"[0-9]{4}-[0-9]{4}") |> fy::fy2date(),
     data_month =
       lubridate::ceiling_date(
         lubridate::floor_date(financial_year, "months") - months(month-1),"months"),
-    data_month = data_month - days(1)) |> 
+    data_month = data_month - lubridate::days(1)) |> 
   dplyr::mutate(
     value = as.numeric(value),
     name = "Venues")
@@ -146,7 +147,7 @@ machines = raw_egm_lga_data |>
     data_month = 
       lubridate::ceiling_date(
         lubridate::floor_date(financial_year, "months") - months(month-1),"months"),
-    data_month = data_month - days(1)) |> 
+    data_month = data_month - lubridate::days(1)) |> 
   dplyr::mutate(
     value = as.numeric(value),
     name = "EGMs")
