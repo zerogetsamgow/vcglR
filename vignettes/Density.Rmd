@@ -55,7 +55,7 @@ population =
       purrr::pmap(
         list(download,sheets), 
         readxl::read_excel, 
-        skip = 5))  |>
+        skip = 4))  |>
   dplyr::select(data) |>
   tidyr::unnest(data) |> 
   dplyr::rename(
@@ -67,10 +67,12 @@ population =
   dplyr::filter(state_code == 2) |> 
   dplyr::select(contains("sa3"),contains("20")) |> 
   tidyr::pivot_longer(tidyselect::contains("20"), values_to = "population") |>
-  dplyr::mutate(population = as.numeric(population),
-         fy_date = 
-           stringr::str_c(name,"-6-30") |>
-           lubridate::ymd())
+  dplyr::mutate(
+    population = 
+      as.numeric(population),
+    fy_date = 
+      stringr::str_c(name,"-6-30") |>
+      lubridate::ymd())
 
 venue_data = vcglR::egm_venue_data  |> 
   dplyr::mutate(
@@ -87,8 +89,7 @@ The number of gaming machines relative to population in a given geographic area 
 
 sa3_shape =
   strayr::read_absmap("sa32021", remove_year_suffix = TRUE) |> 
-  dplyr::filter(state_code == 2)
-
+  dplyr::filter(state_code == 2) 
 
 venue_crs = 
   venue_data |> 
@@ -235,9 +236,10 @@ Together, the patterns observed at small scales and over time suggest the relati
 trial_lines_data =
   sa3_values_pop |> 
   dplyr::ungroup() |> 
-  dplyr::filter(
-    !is.na(population),
-    !(lubridate::year(fy_date) %in% 2020:2022) )  |>
+  dplyr::filter_out(
+    is.na(population)) |> 
+  dplyr::filter_out(
+    lubridate::year(fy_date) %in% 2020:2022)  |>
   dplyr::select(
     fy_date, sa3_name, measure_type, per_1k, sa3_trial) |> 
   tidyr::pivot_wider(

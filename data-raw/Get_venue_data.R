@@ -131,23 +131,8 @@ missing =
 
 if(nrow(missing)>0) {warning("Some venues are missing location data")}
 
-max_year = 
-  max(
-    egm_venue_data$financial_year) |> as.character()
-# Combine with existing data to ensure no data is lost when VGCCC rolls over data years
 egm_venue_data =
-  dplyr::bind_rows(
-    egm_venue_data |> 
-      # Need to re-genenerate financial_year due to type issues.
-     dplyr::mutate(financial_year = fy::date2fy(fy_date)),
-    # Filter out latest financial year to ensure we overwrite half year data
-    vcglR::egm_venue_data |>
-      dplyr::filter_out(financial_year == max_year) |>  
-     dplyr::mutate(financial_year = fy::date2fy(fy_date))
-  ) |> 
-  dplyr::arrange(venue_name, fy_date) |> 
-  dplyr::filter(fy_date<Sys.Date()) |> 
+  egm_venue_data |> 
   unique()
-
 # Save data
 usethis::use_data(egm_venue_data, overwrite = TRUE)

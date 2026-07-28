@@ -1,9 +1,7 @@
 ^renv$
 ^renv\.lock$
-^data-raw$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
 ^LICENSE\.md$
 ^README\.Rmd$
-^\.positai$
-^\.claude$
