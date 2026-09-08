@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 )
 
 library(sf)
+library(vpstheme)
 ```
 
 # vcglR
@@ -255,17 +256,18 @@ ggplot2::ggplot() +
     date_labels = "%Y",
     breaks = seq.Date(
       from = lubridate::ymd("2023-6-1"), 
-      to = lubridate::ymd("2026-6-1"), 
+      to = lubridate::ymd("2026-9-1"), 
       by = "years"),
     expand = c(0,0)
   ) +
   ggplot2::coord_cartesian(
-    xlim = lubridate::ymd("2023-8-1","2026-7-1"), 
+    xlim = lubridate::ymd("2023-8-1","2026-10-1"), 
     ylim = c(0,16e6)) +
-  vpstheme::scale_colour_djcs(
-    palette = "jsr", 
-    name = NULL, guide = "none")+
-  vpstheme::theme_vps_djcs(base_size = 10)+
+# vpstheme::scale_colour_djcs(
+#    palette = "jsr",
+#    name = NULL, guide = "none") +
+  ggplot2::guides(colour = ggplot2::guide_none()) +
+  vpstheme::theme_vps_dffh(base_size = 10)+
   ggplot2::theme(legend.position = "right")
 ```
 
@@ -392,7 +394,7 @@ ggplot2::ggplot() +
     breaks = 
       seq.Date(
         from = lubridate::ymd("2023-6-1"), 
-        to = lubridate::ymd("2026-6-1"), 
+        to = lubridate::ymd("2026-9-1"), 
         by =   "years"),
     expand = c(0,0)
   ) +
@@ -400,10 +402,14 @@ ggplot2::ggplot() +
     xlim = 
       lubridate::ymd(
         "2023-8-1",
-        "2026-7-1"), 
+        "2026-10-1"), 
     ylim = c(0,8e6)) +
-  vpstheme::scale_colour_djcs(palette = "jsr", name = NULL, guide = "none")+
-  vpstheme::theme_vps_djcs(base_size = 10)+
+#  vpstheme::scale_colour_djcs(
+#    palette = "jsr", 
+#    name = NULL, 
+#    guide = "none")+
+  vpstheme::theme_vps_dffh(base_size = 10) +
+  ggplot2::guides(colour = ggplot2::guide_none()) +
   ggplot2::theme(legend.position = "right")
 ```
 
@@ -637,7 +643,7 @@ sa3_plot =
   ggplot2::scale_color_manual(
     guide = "none", 
     values =c(vpstheme::bv.purple, vpstheme::bv.navy)) +
-  vpstheme::theme_vps_djcs(base_size = 10) +
+  vpstheme::theme_vps_dffh(base_size = 10) +
   ggplot2::labs(
     caption = 
       "Note: This chart uses (SA3) geographical areas.")
