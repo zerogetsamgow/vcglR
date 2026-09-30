@@ -95,7 +95,7 @@ with:
 lga_data = vcglR::egm_lga_data
 
 dplyr::glimpse(lga_data)
-#> Rows: 8,904
+#> Rows: 9,075
 #> Columns: 5
 #> $ lga_name       <chr> "Alpine", "Alpine", "Alpine", "Alpine", "Alpine", "Alpi…
 #> $ financial_year <date> 2019-06-30, 2019-06-30, 2019-06-30, 2019-06-30, 2019-0…
@@ -119,8 +119,8 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 08 September 2026. Annual data is up to the 2025-26
-financial year and monthly data is up to July 2026.
+Last update on 01 October 2026. Annual data is up to the 2025-26
+financial year and monthly data is up to August 2026.
 
 ## Possible analysis
 
