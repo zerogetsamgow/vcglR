@@ -119,8 +119,8 @@ Cleaning consists of:
 
 ## Last updated
 
-Last update on 11 November 2026. Annual data is up to the 2025-26
-financial year and monthly data is up to September 2026.
+Last update on 27 November 2026. Annual data is up to the 2025-26
+financial year and monthly data is up to October 2026.
 
 ## Possible analysis
 
@@ -170,27 +170,27 @@ measure the effect on gambling expenditure, noting we will be able to
 compare Monash and Dandenong with neighbouring LGAs. There are also some
 risks of players shifting to neighbouring venues to avoid the trial.
 
-<img src="man/figures/README-make_melb_map-1.png" width="100%" />
+<img src="man/figures/README-make_melb_map-1.png" alt="" width="100%" />
 
 I will update the package as monthly data is released, so it will be
 possible to observe any effect on expenditure using the LGA level data
 as shown below.
 
-<img src="man/figures/README-lga_expend_plot-1.png" width="100%" />
+<img src="man/figures/README-lga_expend_plot-1.png" alt="" width="100%" />
 
 Gaming machines in Ballarat have few substitutes, so players will find
 it more difficult to move to neighbouring venues to avoid the trial.
 
-<img src="man/figures/README-make_ballarat_map-1.png" width="100%" />
+<img src="man/figures/README-make_ballarat_map-1.png" alt="" width="100%" />
 
 This means comparisons for Ballarat need to be made against similar
 regional centres rather than neighbouring LGAs. For example.
 
-<img src="man/figures/README-regional_expend_plot-1.png" width="100%" />
+<img src="man/figures/README-regional_expend_plot-1.png" alt="" width="100%" />
 
 As venue data in the package is geocoded it supports analysis using
 other geographies like Statistical Areas.
 
-<img src="man/figures/README-make_melb_sa3_map-1.png" width="100%" />
+<img src="man/figures/README-make_melb_sa3_map-1.png" alt="" width="100%" />
 
-<img src="man/figures/README-use_pop-1.png" width="100%" />
+<img src="man/figures/README-use_pop-1.png" alt="" width="100%" />
